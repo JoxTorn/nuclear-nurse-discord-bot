@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
                 message.author.send(tornID).catch(console.error);
 
                 if(tornID.indexOf("Discord account is not verified by Torn") !== -1){
-                    membersToVerify.send(tornID+`\nClick this link to verify your account https://www.torn.com/discord.php?verify=${discordID}`).catch(console.error);
+                    membersToVerify.send(tornID+`\nClick this link to verify your account https://www.torn.com/discord.php?verify=${membersToVerify.id}`).catch(console.error);
                 }
             }
             else{
