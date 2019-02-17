@@ -24,7 +24,7 @@ exports.verify = (client, discordID, callback) => {
                         callback(obj.discord.userID)
                     }
                     else{
-                        callback(`Cant verify user. Discord account is not verified by Torn. Please join Torn official Discord to verify account there first.`);
+                        callback(`Cant verify user. Discord account is not verified by Torn.`);
                     }
                 }
             } catch (error) {
