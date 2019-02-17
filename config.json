@@ -4,17 +4,30 @@
     "factions" : {
         "8954" : ["Nukers"],
         "8085" : ["Nukers"],
-        "13851" : ["Nukers", "Revivers"],
+        "13851" : ["Nukers", "Reviver"],
         "9517" : ["Nukers"],
-        "9745" : ["Nukers", "Revivers"],
-        "17133" : ["Nukers", "Revivers"]
+        "9745" : ["Nukers", "Reviver"],
+        "17133" : ["Nukers", "Reviver"],
+
+        "11747" : ["UN Alliance"],
+        "12094" : ["UN Alliance"],
+        "3241" : ["UN Alliance"],
+        "14365" : ["UN Alliance"],
+        "9533" : ["UN Alliance"],
+        "7835" : ["UN Alliance"],
+        "230" : ["UN Alliance"],
+        "946" : ["UN Alliance"],
+        "6924" : ["UN Alliance"],
+        "476" : ["UN Alliance"],
+        "9041" : ["UN Alliance"],
+        "9055" : ["UN Alliance"]
     },
     
-    "welcome_channel" : "general",
+    "welcome_channel" : "door",
 
-    "admin_role" : "admin",
+    "admin_role" : "Server Admin",
 
-    "verified_role" : "verified",
+    "verified_role" : "Verified",
 
-    "revive_command_mention" : "Revivers"
+    "revive_command_mention" : "Reviver"
 }
