@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
 
             //checking did i get response with tornID of discord members
             if(isNaN(tornID)){
-                message.autor.send(tornID).catch(console.error);
+                message.author.send(tornID).catch(console.error);
             }
             else{
                 //If i got torn id, continuing with all member data check buy calling user data procedure
