@@ -5,7 +5,6 @@ exports.run = (client, message, args) => {
     }
 
     var member = message.member;
-    var guild = message.guild;
 
     if(message.mentions.users.first()){
         mentionedMember = message.guild.members.get(message.mentions.users.first().id);
