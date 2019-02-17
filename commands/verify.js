@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
 
                     `Your account couldn't be verified because your Discord account isn't validated by Torn, yet. Please do verify your account following this steps:\n
                     1 - Click this link to validate your account in Torn: https://www.torn.com/discord.php?verify=${membersToVerify.id}\n
-                    2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`
+                    2 - Verify your Discord account in our server by running again the command **!verify** in the channel #door\n`
 
                     membersToVerify.send(`Your account couldn't be verified because your Discord account isn't validated by Torn, yet. Please do verify your account following this steps:\n1 - Click this link to validate your account in Torn: https://www.torn.com/discord.php?verify=${membersToVerify.id}\n2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`).catch(console.error);
                 }
