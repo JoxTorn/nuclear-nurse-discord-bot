@@ -1,0 +1,20 @@
+{
+    "prefix" : "!",
+ 
+    "factions" : {
+        "8954" : ["Nukers"],
+        "8085" : ["Nukers"],
+        "13851" : ["Nukers", "Revivers"],
+        "9517" : ["Nukers"],
+        "9745" : ["Nukers", "Revivers"],
+        "17133" : ["Nukers", "Revivers"]
+    },
+    
+    "welcome_channel" : "general",
+
+    "admin_role" : "admin",
+
+    "verified_role" : "verified",
+
+    "revive_command_mention" : "Revivers"
+}
