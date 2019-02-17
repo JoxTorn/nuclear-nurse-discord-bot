@@ -20,6 +20,10 @@ exports.run = (client, message, args) => {
             //checking did i get response with tornID of discord members
             if(isNaN(tornID)){
                 message.author.send(tornID).catch(console.error);
+
+                if(tornID.indexOf("Discord account is not verified by Torn") !== -1){
+                    membersToVerify.send(tornID+`\nClick this link to verify your account https://www.torn.com/discord.php?verify=${discordID}`).catch(console.error);
+                }
             }
             else{
                 //If i got torn id, continuing with all member data check buy calling user data procedure
