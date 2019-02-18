@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
                 message.author.send(tornID).catch(console.error);
 
                 if(tornID.indexOf("This Discord account isn't verified by Torn") !== -1){
-                    membersToVerify.send(`Your account couldn't be verified because your Discord account isn't validated by Torn. Please validate your account following these steps:\n1 - Click this link to validate your account in Torn: https://www.torn.com/discord.php?verify=${membersToVerify.id}\n2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`).catch(console.error);
+                    membersToVerify.send(`Your account couldn't be verified because your Discord account isn't validated by Torn. Please validate your account following these steps:\n1 - Click this link to validate your account in Torn: https://www.torn.com/discord\n2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`).catch(console.error);
                 }
             }
             else{
