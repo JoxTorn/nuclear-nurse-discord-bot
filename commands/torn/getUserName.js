@@ -16,7 +16,7 @@ exports.getUserName = (client, tornID, callback) => {
                 var obj = JSON.parse(body);
         
                 if(obj.error){
-                    console.log(obj.error);
+                    console.log(obj.error, tornID);
                     callback(false, "Cant verify user. Error accessing Torn API [4]. Please try again later");
                 }
                 else{
@@ -36,12 +36,12 @@ exports.getUserName = (client, tornID, callback) => {
                     }
                 }
             } catch (error) {
-                console.log(error);
+                console.log(error, tornID);
                 callback(false, "Cant verify user. Error accessing Torn API [5]. Please try again later");
             }
     
         });
-    }).on('error', function(error){
+    }).on('error', function(error, tornID){
         console.log(error);
         callback(false, "Cant verify user. Error accessing Torn API [6]. Please try again later");
     });
