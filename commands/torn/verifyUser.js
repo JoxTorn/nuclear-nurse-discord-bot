@@ -20,7 +20,7 @@ exports.verify = (client, discordID, callback) => {
                     callback("Account couldn't be verified. Error accessing Torn API [1]. Please try again later.");
                 }
                 else{
-                    if(obj.discord && obj.discord.userID && obj.discord.discordID !== ''){
+                    if(obj.discord && obj.discord.userID !== '' && obj.discord.discordID !== ''){
                         callback(obj.discord.userID)
                     }
                     else{
