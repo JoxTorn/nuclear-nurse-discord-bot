@@ -17,7 +17,7 @@ exports.getUserName = (client, tornID, callback) => {
         
                 if(obj.error){
                     console.log(obj.error);
-                    callback(false, "Cant verify user. Error accessing Torn API. Please try again later");
+                    callback(false, "Cant verify user. Error accessing Torn API [4]. Please try again later");
                 }
                 else{
                     if(obj.player_id && obj.name && obj.faction && obj.faction.faction_id && obj.faction.faction_name){
@@ -37,12 +37,12 @@ exports.getUserName = (client, tornID, callback) => {
                 }
             } catch (error) {
                 console.log(error);
-                callback(false, "Cant verify user. Error accessing Torn API. Please try again later");
+                callback(false, "Cant verify user. Error accessing Torn API [5]. Please try again later");
             }
     
         });
     }).on('error', function(error){
         console.log(error);
-        callback(false, "Cant verify user. Error accessing Torn API. Please try again later");
+        callback(false, "Cant verify user. Error accessing Torn API [6]. Please try again later");
     });
 }
