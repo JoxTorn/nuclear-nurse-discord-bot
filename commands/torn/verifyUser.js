@@ -17,7 +17,7 @@ exports.verify = (client, discordID, callback) => {
         
                 if(obj.error){
                     console.log(obj.error);
-                    callback("Account couldn't be verified. Error accessing Torn API. Please try again later.");
+                    callback("Account couldn't be verified. Error accessing Torn API [1]. Please try again later.");
                 }
                 else{
                     if(obj.discord && obj.discord.userID){
@@ -29,12 +29,12 @@ exports.verify = (client, discordID, callback) => {
                 }
             } catch (error) {
                 console.log(error);
-                callback("Account couldn't be verified. Error accessing Torn API. Please try again later.");
+                callback("Account couldn't be verified. Error accessing Torn API [2]. Please try again later.");
             }
     
         });
     }).on('error', function(error){
         console.log(error);
-        callback("Account couldn't be verified. Error accessing Torn API. Please try again later.");
+        callback("Account couldn't be verified. Error accessing Torn API [3]. Please try again later.");
     });
 }
