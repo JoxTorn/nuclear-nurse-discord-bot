@@ -10,6 +10,10 @@ exports.run = (client, message, args) => {
     if(message.mentions.users.first()){
         membersToVerify = message.guild.members.get(message.mentions.users.first().id);
     }
+    
+    if(message.channel.name == 'general'){
+        return message.reply(`Can't execute this command on this channel`);
+    }
 
     if(membersToVerify){
         //Remove all from member for verification
