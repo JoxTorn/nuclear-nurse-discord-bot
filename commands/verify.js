@@ -87,7 +87,7 @@ exports.run = (client, message, args) => {
         ).catch(console.error); //Removes all roles
     }
     else{
-        console.log('No member to verify... wtf...', membersToVerify);
+        console.log('No member to verify... wtf...', membersToVerify, message.mentions.users.first().id);
     }
 
 }
