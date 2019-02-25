@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
 
     //If in message there is mention verification will be done for mentioned member
     if(message.mentions.users.first()){
-        membersToVerify = message.guild.members.get(message.mentions.users.first().id).catch(console.error);;
+        membersToVerify = message.guild.members.get(message.mentions.users.first().id);
     }
     
     if(message.channel.name == 'general'){
