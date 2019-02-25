@@ -3,7 +3,9 @@ const fs = require('fs');
 var path = require('path');
 
 //Initating discord client
-const  client = new Discord.Client();
+const  client = new Discord.Client({forceFetchUsers: true}); 
+//If there is no force fatch users some users will not be fetch and will have problem if i tyr to access then ove guild members list
+//https://github.com/discordjs/discord.js/issues/230
 
 const config = require("./config.json");
 // We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
