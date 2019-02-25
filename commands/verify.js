@@ -8,6 +8,7 @@ exports.run = (client, message, args) => {
 
     //If in message there is mention verification will be done for mentioned member
     if(message.mentions.users.first()){
+        message.guild.members.fetch();
         membersToVerify = message.guild.members.get(message.mentions.users.first().id);
     }
     
