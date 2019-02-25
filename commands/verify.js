@@ -8,11 +8,11 @@ exports.run = (client, message, args) => {
 
     //If in message there is mention verification will be done for mentioned member
     if(message.mentions.users.first()){
-        membersToVerify = message.guild.members.get(message.mentions.users.first().id);
+        membersToVerify = message.guild.members.get(message.mentions.users.first().id).catch(console.error);;
     }
     
     if(message.channel.name == 'general'){
-        return message.reply(`Can't execute this command on this channel`);
+        return message.reply(`Can't execute this command on this channel`).catch(console.error);;
     }
 
     if(membersToVerify){
@@ -39,16 +39,16 @@ exports.run = (client, message, args) => {
                                 //Check is bot have permission to change nickname
                                 if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
                                 //Set neickname
-                                membersToVerify.setNickname(name);
+                                membersToVerify.setNickname(name).catch(console.error);;
 
                                 //Find verified role and give it to member
                                 var roleVerified = message.guild.roles.find(role => role.name === client.config.verified_role);
-                                membersToVerify.addRole(roleVerified);
+                                membersToVerify.addRole(roleVerified).catch(console.error);;
 
                                 //Check is role exists for user faction
                                 var roleFaction = message.guild.roles.find(role => role.name === factionName);
                                 if(roleFaction){
-                                    membersToVerify.addRole(roleFaction);
+                                    membersToVerify.addRole(roleFaction).catch(console.error);;
                                 }
                                 else{
                                     // Create a new role with data
@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
                                         name: factionName
                                     })
                                         .then(newRole => {
-                                            membersToVerify.addRole(newRole);
+                                            membersToVerify.addRole(newRole).catch(console.error);;
                                         })
                                         .catch(console.error)
                                 }
@@ -66,7 +66,7 @@ exports.run = (client, message, args) => {
                                     for(roleToAssign of client.config.factions[factionID]){
                                         var role = message.guild.roles.find(role => role.name === roleToAssign);
                                         if(role){
-                                            membersToVerify.addRole(role);
+                                            membersToVerify.addRole(role).catch(console.error);;
                                         }
                                     }
                                 }
