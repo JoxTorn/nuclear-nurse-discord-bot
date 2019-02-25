@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
     var guild = message.member.guild;
 
      // Fetch guild members
-    await guild.fetchMembers().catch(console.error);
+    guild.fetchMembers().catch(console.error);
 
     var maxRoles = 0;
 
