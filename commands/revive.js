@@ -45,6 +45,8 @@ exports.run = (client, message, args) => {
         }
     }
 
+    message.delete().catch(console.error);
+
     //Function for finding id from nickname name[id]
     function getIdFormNickname(name){
         var re = /.+\[(\d+)\]/gm;
