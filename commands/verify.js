@@ -3,6 +3,10 @@ exports.run = (client, message, args) => {
     let verification = require(`./torn/verifyUser.js`);
     let userData = require(`./torn/getUserName.js`)
 
+    if(message.channel.name == 'general'){
+        return message.reply(`Can't execute this command on this channel`).catch(console.error);;
+    }
+
     //Setting default member to be verified to member that sent message
     var membersToVerify = message.member;
 
@@ -16,10 +20,6 @@ exports.run = (client, message, args) => {
     }
     else{
         verifyMember(membersToVerify);
-    }
-    
-    if(message.channel.name == 'general'){
-        return message.reply(`Can't execute this command on this channel`).catch(console.error);;
     }
 
     function verifyMember(membersToVerify){
