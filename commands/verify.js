@@ -10,19 +10,19 @@ exports.run = (client, message, args) => {
     if(message.mentions.users.first()){
         // Fetch guild members
         message.guild.fetchMember(message.mentions.users.first()).then(
-            m => {verification(m)}
+            m => {verifyMember(m)}
         ).catch(console.error);
         //membersToVerify = message.guild.members.get(message.mentions.users.first().id);
     }
     else{
-        verification(membersToVerify);
+        verifyMember(membersToVerify);
     }
     
     if(message.channel.name == 'general'){
         return message.reply(`Can't execute this command on this channel`).catch(console.error);;
     }
 
-    function verification(membersToVerify){
+    function verifyMember(membersToVerify){
         if(membersToVerify){
             //Remove all from member for verification
             membersToVerify.removeRoles(membersToVerify.roles).then(
