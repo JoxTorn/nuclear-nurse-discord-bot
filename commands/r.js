@@ -10,7 +10,8 @@ exports.run = (client, message, args) => {
 
     var member = message.member;
     var guild = message.guild;
-    var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention);
+    //var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention);
+    var mantionRole = 'Reviver';
 
     if(message.mentions.users.first()){
         mentionedMember = message.guild.members.get(message.mentions.users.first().id);
