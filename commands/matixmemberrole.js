@@ -8,56 +8,48 @@ exports.run = (client, message, args) => {
         return message.reply("You don\'t have permission to execute this command");
     }
 
-    //var guild = message.member.guild;
-
     // Fetch guild members
     message.member.guild.fetchMembers().then(guild => {
-        
-        var csv = '';
+        var memberList = [];
 
-
-        console.log('Number of roles', message.member.guild.roles.length);
-
-        for(var role in  message.member.guild.roles){
-            console.log(role.name);
-        }
-
-
-
-
-
-
-        /*
-        var maxRoles = 0;
-
-        var csv = "";
-        var headers = "member";
-
-        //Going thrue all members of guild
-        for(member of guild.members){
-            csv += "\n" + (member[1].nickname || member[1].displayName);
-            var i = 0;
-            //Going over each role of selected member
-            for(role of member[1].roles){
-                csv += "," + role[1].name;
-                i++;
+        for(var member of guild.members){
+            var obj = {};
+            obj.member = (member[1].nickname || member[1].displayName);
+            for(var role of message.member.guild.roles){
+                obj[role[1].name] = (member[1].roles.get(role[1].id) ? true : false);
             }
-            //Checking maximum number of roles
-            if(i > maxRoles){maxRoles = i};
+            memberList.push(obj);
         }
 
-        //creating headers for csv
-        for(var i=0; i < maxRoles; i++){
-            headers += ",Role" + i;
+        //Preparing data for export
+        var csv = "";
+
+
+        for(var i=0; i<memberList.length; i++){
+    
+            if(i == 0){
+                var j = 0;
+                for(var dataheader in memberList[i]){
+                    csv += (j==0 ? "" : ",") + dataheader;
+                    j++;
+                }
+                csv += "\n";
+            }
+    
+            var x = 0;
+            for(var data in memberList[i]){
+                csv += (x == 0 ? "" : ",") + (typeof memberList[i][data] === 'string' ? "\"" : "") + memberList[i][data] + (typeof memberList[i][data] === 'string' ? "\"" : "");
+                x++;
+            }
+            csv += "\n";
+    
         }
 
-        //Combining headers and data
-        csv = headers + csv;
 
         //EXPORTING DATA
 
         //Setting file name
-        var exportName = 'membersList-' + Date.now() + '.csv';
+        var exportName = 'membersRolesMatrix-' + Date.now() + '.csv';
 
         var exportPath = path.join(client.config.exportPath, exportName);
 
@@ -82,7 +74,7 @@ exports.run = (client, message, args) => {
                 }
             );
         });
-        */
+
     }).catch(console.error);
 
 }
