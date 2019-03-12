@@ -44,7 +44,7 @@ exports.run = (client, message, args) => {
                     //console.log(rng)
             
                     if(rng){
-                        message.reply(`Random number in range ${args[0]} - ${args[1]} is ${rng.result.random.data[0]}`);
+                        message.reply(`The lucky winner is: ${rng.result.random.data[0]}`);
                     }
                     else{
                         message.reply("Error reading data from Random.org [1]. Please try again later.");
@@ -67,6 +67,6 @@ exports.run = (client, message, args) => {
         req.end();
     }
     else{
-        message.reply('This command ecpect 2 numbers where second number is greather then first');
+        message.reply('This command expect 2 numbers where second number is greather then first');
     }
 }
