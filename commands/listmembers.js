@@ -16,11 +16,11 @@ exports.run = (client, message, args) => {
         var maxRoles = 0;
 
         var csv = "";
-        var headers = "member";
+        var headers = "member,nickname";
 
         //Going thrue all members of guild
         for(member of guild.members){
-            csv += "\n" + (member[1].nickname || member[1].displayName);
+            csv += "\n" + member[1].user.tag + "," + (member[1].nickname || member[1].displayName);
             var i = 0;
             //Going over each role of selected member
             for(role of member[1].roles){

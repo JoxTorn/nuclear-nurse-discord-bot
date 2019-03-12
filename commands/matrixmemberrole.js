@@ -14,7 +14,8 @@ exports.run = (client, message, args) => {
 
         for(var member of guild.members){
             var obj = {};
-            obj.member = (member[1].nickname || member[1].displayName);
+            obj.member = member[1].user.tag;
+            obj.nickname = (member[1].nickname || member[1].displayName);
             for(var role of message.member.guild.roles){
                 obj[role[1].name] = (member[1].roles.get(role[1].id) ? true : false);
             }
