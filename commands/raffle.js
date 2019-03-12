@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
             "id": 0
         }
 
-        var post_data = JSON.stringify(randomRequest);
+        //var post_data = JSON.stringify(randomRequest);
 
         console.log('post_data: ', post_data);
 
@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
                 try {
                     var rng = JSON.parse(body);
 
-                    console.log(rng)
+                    //console.log(rng)
             
                     if(rng){
                         message.reply(`Random number in range ${args[0]} - ${args[1]} is ${rng.result.random.data[0]}`);
