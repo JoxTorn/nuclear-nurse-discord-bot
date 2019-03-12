@@ -15,9 +15,9 @@ exports.run = (client, message, args) => {
             "id": 0
         }
 
-        //var post_data = JSON.stringify(randomRequest);
+        var post_data = JSON.stringify(randomRequest);
 
-        console.log('post_data: ', post_data);
+        //console.log('post_data: ', post_data);
 
         var options = {
             hostname: 'api.random.org',
