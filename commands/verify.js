@@ -19,7 +19,11 @@ exports.run = (client, message, args) => {
         //membersToVerify = message.guild.members.get(message.mentions.users.first().id);
     }
     else{
-        verifyMember(membersToVerify);
+        // Fetch guild members
+        message.guild.fetchMember(membersToVerify).then(
+            m => {verifyMember(m)}
+        ).catch(console.error);
+        //verifyMember(membersToVerify);
     }
 
     function verifyMember(membersToVerify){
