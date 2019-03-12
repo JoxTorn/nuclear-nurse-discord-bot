@@ -17,6 +17,8 @@ client.config.token = process.env.token;
 //Set torn api key
 client.config.torn_api_key = process.env.torn_api_key;
 
+//Set random.org api keu
+client.config.random_org_api = process.env.random_org_api;
 
 //setting export path to go to export directory
 client.config.exportPath = __dirname;
