@@ -93,7 +93,7 @@ exports.run = (client, message, args) => {
                                                 .then(newRole => {
                                                     roles.push(newRole);
                                                     m.addRoles(roles).then(m => {
-                                                        message.channel.send(`Welcome ${m}`).catch(console.error);
+                                                        message.channel.send(`${m}, you are now verified and you have permissions based on your current faction.`).catch(console.error);
                                                     }).catch(error => {
                                                         if(error.code == 50013){
                                                             message.channel.send(`I don't have permission to modify roles for ${membersToVerify}`).catch(console.error);
