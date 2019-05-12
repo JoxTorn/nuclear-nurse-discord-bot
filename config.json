@@ -5,27 +5,9 @@
         "8954" : ["Nukers"],
         "8085" : ["Nukers"],
         "13851" : ["Nukers", "Reviver"],
-        "9517" : ["Nukers"],
         "9745" : ["Nukers", "Reviver"],
         "17133" : ["Nukers", "Reviver"],
-        "12863" : ["Nukers"],
-        "41633" : ["Nukers"],
-
-
-        "9171" : ["UN Alliance"],
-        
-        "11747" : ["UN Alliance"],
-        "12094" : ["UN Alliance"],
-        "3241" : ["UN Alliance"],
-        "14365" : ["UN Alliance"],
-        "9533" : ["UN Alliance"],
-        "7835" : ["UN Alliance"],
-        "230" : ["UN Alliance"],
-        "946" : ["UN Alliance"],
-        "6924" : ["UN Alliance"],
-        "478" : ["UN Alliance"],
-        "9041" : ["UN Alliance"],
-        "9055" : ["UN Alliance"]
+        "12863" : ["Nukers"]
     },
     
     "welcome_channel" : "door",
