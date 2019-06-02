@@ -33,7 +33,7 @@ fs.readdir("./commands/", (err, files) => {
         let props = require(`./commands/${file}`);
         let commandName = file.split(".")[0];
         console.log(`Attempting to load command ${commandName}`);
-        client.commands[commandName]= props;
+        client.commands[commandName] = props;
     });
 });
 
@@ -46,6 +46,18 @@ fs.readdir("./events/", (err, files) => {
         let eventName = file.split(".")[0];
         console.log(`Attempting to load event ${eventName}`);
         client.on(eventName, event.bind(null, client));
+    });
+});
+
+//Loading all jobs
+fs.readdir("./jobs/", (err, files) => {
+    if (err) return console.error(err);
+    files.forEach(file => {
+        if (!file.endsWith(".js")) return;
+        const job = require(`./jobs/${file}`);
+        let jobName = file.split(".")[0];
+        console.log(`Attempting to load job ${jobName}`);
+        job.run(client);
     });
 });
 

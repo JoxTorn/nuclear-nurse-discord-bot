@@ -13,13 +13,33 @@ exports.run = (client, message, args) => {
     //var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention);
     var mantionRole = 'Reviver';
 
+    
+    /************************************/
+
+    var currentChannel = message.channel.name;
+    var respenseChannel = message.channel;
+
+    //for(var rediresct of client.config.revive_request_redirect)
+    var redirect = client.config.revive_request_redirect.find(function(element) {return element.from == currentChannel;})
+    if(redirect){
+        respenseChannel = guild.channels.find(channel => channel.name == redirect.to);
+        if(!respenseChannel){
+            respenseChannel = message.channel;
+            redirect = undefined;
+        }
+    }
+    
+    /************************************/
+
     if(message.mentions.users.first()){
         mentionedMember = message.guild.members.get(message.mentions.users.first().id);
 
         var id = getIdFormNickname(mentionedMember.nickname || mentionedMember.user.username);
     
             if(id){
-                message.channel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                //message.channel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                respenseChannel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{
                 message.reply('Can\'t send that message, I didn\'t found ID of mentioned member');
@@ -28,17 +48,23 @@ exports.run = (client, message, args) => {
     else{
         if(args[0]){
             if(isNaN(args[0])){
-                message.channel.send(`${mantionRole}, please revive player with name ${args[0]}\nhttps://www.torn.com/profiles.php?NID=${args[0]}#/`);
+                //message.channel.send(`${mantionRole}, please revive player with name ${args[0]}\nhttps://www.torn.com/profiles.php?NID=${args[0]}#/`);
+                respenseChannel.send(`${mantionRole}, please revive player with name ${args[0]}\nhttps://www.torn.com/profiles.php?NID=${args[0]}#/`);
+                if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{
-                message.channel.send(`${mantionRole}, please revive player with id ${args[0]}\nhttps://www.torn.com/profiles.php?XID=${args[0]}#/`);
+                //message.channel.send(`${mantionRole}, please revive player with id ${args[0]}\nhttps://www.torn.com/profiles.php?XID=${args[0]}#/`);
+                respenseChannel.send(`${mantionRole}, please revive player with id ${args[0]}\nhttps://www.torn.com/profiles.php?XID=${args[0]}#/`);
+                if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
         }
         else{
             var id = getIdFormNickname(member.nickname || member.user.username);
     
             if(id){
-                message.channel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                //message.channel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                respenseChannel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{
                 message.reply('Can\'t send that message, I didn\'t found your ID');
@@ -48,7 +74,7 @@ exports.run = (client, message, args) => {
 
     setTimeout(function() {
         message.delete().catch(console.error);
-     }, 5000);
+    }, 3000);
 
     //Function for finding id from nickname name[id]
     function getIdFormNickname(name){
