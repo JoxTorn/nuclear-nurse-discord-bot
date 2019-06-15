@@ -20,7 +20,7 @@ exports.getUserName = (client, tornID, callback) => {
                     callback(false, "Cant verify user. Error accessing Torn API [4]. Please try again later");
                 }
                 else{
-                    if(obj.player_id && obj.name && obj.faction && obj.faction.faction_id && obj.faction.faction_name){
+                    if(obj.player_id && obj.name && obj.faction && obj.faction.faction_name){
                         /*
                         if(obj.faction && obj.faction.faction_id && client.config.factions.indexOf(obj.faction.faction_id) != -1){
                             callback(true, `${obj.name} [${obj.player_id}]`);
