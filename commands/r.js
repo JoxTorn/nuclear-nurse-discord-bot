@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
     var member = message.member;
     var guild = message.guild;
     //var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention);
-    var mantionRole = 'Reviver';
+    var mantionRole = '<@&617337809228922881>';
 
     
     /************************************/
