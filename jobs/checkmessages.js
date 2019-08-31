@@ -35,8 +35,8 @@ exports.run = (client) => {
                                 //console.log(msg[0], msg[1].content, msg[1].createdTimestamp, 'DELETE IT');
                                 var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
                                 for(var channelDel of channelsForDeletedMessages){
-                                    channelDel.send('No player id found, Delete IT');
-                                    channelDel.send(msg[1].content);
+                                    channelDel[1].send('No player id found, Delete IT');
+                                    channelDel[1].send(msg[1].content);
                                 }
                                 msg[1].delete().catch(console.error);
                             }
@@ -82,8 +82,8 @@ exports.run = (client) => {
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
                             var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
                             for(var channelDel of channelsForDeletedMessages){
-                                channelDel.send('Hospital time 0, Delete IT');
-                                channelDel.send(msg[1].content);
+                                channelDel[1].send('Hospital time 0, Delete IT');
+                                channelDel[1].send(msg[1].content);
                             }
                             msg[1].delete().catch(console.error);
                         }
