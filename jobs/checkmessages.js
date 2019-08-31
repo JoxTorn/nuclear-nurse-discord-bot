@@ -33,6 +33,11 @@ exports.run = (client) => {
                             }
                             else{
                                 //console.log(msg[0], msg[1].content, msg[1].createdTimestamp, 'DELETE IT');
+                                var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
+                                for(var channel of channelsForDeletedMessages){
+                                    channel.send('No player id found, Delete IT');
+                                    channel.send(msg[1].content);
+                                }
                                 msg[1].delete().catch(console.error);
                             }
                         }
@@ -75,6 +80,11 @@ exports.run = (client) => {
                     else{
                         if(obj.states.hospital_timestamp == 0){
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
+                            var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
+                            for(var channel of channelsForDeletedMessages){
+                                channel.send('Hospital time 0, Delete IT');
+                                channel.send(msg[1].content);
+                            }
                             msg[1].delete().catch(console.error);
                         }
                         else{
