@@ -7,7 +7,8 @@
         "13851" : ["Nukers", "Reviver"],
         "9745" : ["Nukers", "Reviver"],
         "17133" : ["Nukers", "Reviver"],
-        "12863" : ["Nukers"]
+        "12863" : ["Nukers"],
+        "21028" : ["Nukers", "Reviver"]
     },
     
     "welcome_channel" : "door",
