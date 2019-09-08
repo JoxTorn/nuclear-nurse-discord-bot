@@ -9,7 +9,6 @@ exports.run = (client) => {
     var job = setInterval(checkMessages, interval);
 
     function checkMessages(){
-        var 
         var guild = client.guilds.get('545317324089982976');
         if(guild){
             var channels = guild.channels.filter(channel => { return channel.name == 'reviving' || channel.name == 'ns' || channel.name == '420-creme-de-la-creme' || channel.name == 'elimination'});
@@ -21,7 +20,7 @@ exports.run = (client) => {
                 //console.log('channel', channel);
                 channel[1].fetchMessages({limit: 50}).then( messages => {
                     checkPoint1 = Date.now(); 
-                    //console.log(`Message fatch time for channel ${channel[1].name}: ${checkPoint1 -startTime}`)
+                    console.log(`Message fatch time for channel ${channel[1].name}: ${checkPoint1 -startTime}`);
                     for(msg of messages){
                         if(msg[1].author.id == '300686645370421248'){
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
@@ -49,7 +48,7 @@ exports.run = (client) => {
                         }
                     }
                     checkPoint2 = Date.now(); 
-                    //console.log(`Message porecessing time for channel ${channel[1].name}: ${checkPoint2-checkPoint1}`);
+                    console.log(`Message porecessing time for channel ${channel[1].name}: ${checkPoint2-checkPoint1}`);
                 })
             }
         }
@@ -79,7 +78,7 @@ exports.run = (client) => {
             res.on('end', function(){
                 try {
 
-                    //console.log(`Data recieved from torn api for ${playerID}. Time needed ${Date.now()-startTime}`)
+                    console.log(`Data recieved from torn api for ${playerID}. Time needed ${Date.now()-startTime}`);
 
                     var guild = client.guilds.get('545317324089982976');
                     //console.log('message:' , msg);
@@ -91,7 +90,7 @@ exports.run = (client) => {
                     }
                     else{
 
-                        //console.log(`Hospital time remainig for ${playerID}: ${obj.states.hospital_timestamp}`);
+                        console.log(`Hospital time remainig for ${playerID}: ${obj.states.hospital_timestamp}`);
 
                         if(obj.states.hospital_timestamp == 0){
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
@@ -104,7 +103,7 @@ exports.run = (client) => {
                             msg[1].delete().catch(console.error);
                         }
                         else{
-                            //console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
+                            console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
                         }
                     }
                 } catch (error) {
