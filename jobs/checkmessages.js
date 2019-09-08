@@ -90,17 +90,21 @@ exports.run = (client) => {
                         console.log(obj.error, msg[0]);
                     }
                     else{
+
+                        console.log(`Hospital time remainig for ${playerID}: ${obj.states.hospital_timestamp}`);
+
                         if(obj.states.hospital_timestamp == 0){
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
                             var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
                             for(var channelDel of channelsForDeletedMessages){
+                                console.log('Hospital time 0, Delete IT');
                                 channelDel[1].send('Hospital time 0, Delete IT');
                                 channelDel[1].send(msg[1].content);
                             }
                             msg[1].delete().catch(console.error);
                         }
                         else{
-                            //console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
+                            console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
                         }
                     }
                 } catch (error) {
