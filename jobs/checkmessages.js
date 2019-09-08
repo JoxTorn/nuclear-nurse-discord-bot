@@ -18,7 +18,7 @@ exports.run = (client) => {
                 //console.log('channel', channel);
                 channel[1].fetchMessages({limit: 50}).then( messages => {
                     var checkPoint1 = Date.now(); 
-                    console.log(messages.first());
+                    
                     console.log(`Message fatch time for channel ${messages.first().channel.name}: ${checkPoint1 -startTime}`);
                     for(msg of messages){
                         if(msg[1].author.id == '300686645370421248'){
