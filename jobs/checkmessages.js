@@ -19,7 +19,7 @@ exports.run = (client) => {
                 channel[1].fetchMessages({limit: 50}).then( messages => {
                     var checkPoint1 = Date.now(); 
                     
-                    console.log(`Message fatch time for channel ${messages.first().channel.name}: ${checkPoint1 -startTime}`);
+                    //console.log(`Message fatch time for channel ${messages.first().channel.name}: ${checkPoint1 -startTime}`);
                     for(msg of messages){
                         if(msg[1].author.id == '300686645370421248'){
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
@@ -47,7 +47,7 @@ exports.run = (client) => {
                         }
                     }
                     var checkPoint2 = Date.now(); 
-                    console.log(`Message porecessing time for channel ${messages.first().channel.name}: ${checkPoint2-checkPoint1}`);
+                    //console.log(`Message porecessing time for channel ${messages.first().channel.name}: ${checkPoint2-checkPoint1}`);
                 })
             }
         }
@@ -77,7 +77,7 @@ exports.run = (client) => {
             res.on('end', function(){
                 try {
 
-                    console.log(`Data recieved from torn api for ${playerID}. Time needed ${Date.now()-startTime}`);
+                    //console.log(`Data recieved from torn api for ${playerID}. Time needed ${Date.now()-startTime}`);
 
                     var guild = client.guilds.get('545317324089982976');
                     //console.log('message:' , msg);
@@ -89,7 +89,7 @@ exports.run = (client) => {
                     }
                     else{
 
-                        console.log(`Hospital time remainig for ${playerID}: ${obj.states.hospital_timestamp}`);
+                        //console.log(`Hospital time remainig for ${playerID}: ${obj.states.hospital_timestamp}`);
 
                         if(obj.states.hospital_timestamp == 0){
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
