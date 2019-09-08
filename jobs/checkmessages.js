@@ -13,14 +13,12 @@ exports.run = (client) => {
         if(guild){
             var channels = guild.channels.filter(channel => { return channel.name == 'reviving' || channel.name == 'ns' || channel.name == '420-creme-de-la-creme' || channel.name == 'elimination'});
             var startTime = Date.now();
-            var checkPoint1 = Date.now();
-            var checkPoint2 = Date.now();
 
             for(var channel of channels){
                 //console.log('channel', channel);
                 channel[1].fetchMessages({limit: 50}).then( messages => {
-                    checkPoint1 = Date.now(); 
-                    console.log(`Message fatch time for channel ${channel[1].name}: ${checkPoint1 -startTime}`);
+                    var checkPoint1 = Date.now(); 
+                    console.log(`Message fatch time for channel ${messages[1].channel.name}: ${checkPoint1 -startTime}`);
                     for(msg of messages){
                         if(msg[1].author.id == '300686645370421248'){
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
@@ -47,8 +45,8 @@ exports.run = (client) => {
                             }
                         }
                     }
-                    checkPoint2 = Date.now(); 
-                    console.log(`Message porecessing time for channel ${channel[1].name}: ${checkPoint2-checkPoint1}`);
+                    var checkPoint2 = Date.now(); 
+                    console.log(`Message porecessing time for channel ${messages[1].channel.name}: ${checkPoint2-checkPoint1}`);
                 })
             }
         }
