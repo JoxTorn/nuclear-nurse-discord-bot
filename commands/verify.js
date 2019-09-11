@@ -39,8 +39,9 @@ exports.run = (client, message, args) => {
                         message.author.send(`${membersToVerify}, ` + tornID).catch(console.error);
                         
                         if(tornID.indexOf("This Discord account isn't verified by Torn") !== -1){
-                            membersToVerify.send(`Your account couldn't be verified because your Discord account isn't validated by Torn. Please validate your account following these steps:\n1 - Click this link to validate your account in Torn: https://www.torn.com/discord\n2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`).catch(console.error);
-                            message.reply('I have sent a DM with instructions to validate your account').catch(console.error);
+                            //membersToVerify.send(`Your account couldn't be verified because your Discord account isn't validated by Torn. Please validate your account following these steps:\n1 - Click this link to validate your account in Torn: https://www.torn.com/discord\n2 - Verify your Discord account in our server by running again the command !verify in the channel #door\n`).catch(console.error);
+                            //message.reply('I have sent a DM with instructions to validate your account').catch(console.error);
+                            message.reply(`Your Discord account isn't linked with Torn account yet, please follow the steps:\n1 - Join Torn Official Discord server: https://www.torn.com/discord\n2 - Verify your account in Torn Discord server by running: **!verify** and click on the link provided by Torn's bot in a private message \n3 - On Central Hospital, verify your account in #door channel by running the command: **!verify**`).catch(console.error);
                         }
                     }
                     else{
