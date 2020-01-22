@@ -11,7 +11,7 @@ exports.run = (client) => {
     function checkMessages(){
         var guild = client.guilds.get('545317324089982976');
         if(guild){
-            var channels = guild.channels.filter(channel => { return channel.name == 'reviving' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == '420-creme-de-la-creme' || channel.name == 'elimination'});
+            var channels = guild.channels.filter(channel => { return channel.name == 'reviving' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == '420-creme-de-la-creme' || channel.name == 'elimination' || channel.name == 'pt-family'});
             var startTime = Date.now();
 
             for(var channel of channels){
