@@ -22,6 +22,7 @@ exports.run = (client, message, args) => {
                     let memberFaction = familyMembers.filter(m => m.memberID == id);
 
                     var obj = {};
+                    obj.id = '<@' + member[1].user.id + '>';
                     obj.member = member[1].user.tag;
                     obj.nickname = (member[1].nickname || member[1].displayName);
                     obj.faction = (memberFaction[0] ? memberFaction[0].factionID : 'NOT MEMBER');
