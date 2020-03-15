@@ -21,6 +21,7 @@ exports.run = (client) => {
             //console.log(channelTerritories)
 
             data.territories.forEach(element => {
+                /*
                 let msgEmbed = {
                     color: 0x0099ff,
                     title: 'Territory change',
@@ -64,6 +65,14 @@ exports.run = (client) => {
                     //    icon_url: 'https://i.imgur.com/wSTFkRM.png',
                     //},
                 };
+                */
+
+                let msgEmbed = {
+                    color: 0x000000,
+                    description: `**[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})** have claimed **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}** ${element.oldFaction == 0 ? '' : 'from **' + element.oldFactionName + '**'}`,
+                    timestamp: new Date()
+                };
+
                 channelTerritories.send({ embed: msgEmbed });
             });
             
