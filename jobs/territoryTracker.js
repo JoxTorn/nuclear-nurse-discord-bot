@@ -46,13 +46,13 @@ exports.run = (client) => {
                             inline: true,
                         },
                         {
-                            name: 'Old Faction',
-                            value: `[${element.oldFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.oldFaction})`,
-                        },
-                        {
                             name: 'New Faction',
                             value: `[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})`,
                             inline: true,
+                        },
+                        {
+                            name: 'Old Faction',
+                            value: `[${element.oldFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.oldFaction})`,
                         }
                     ],
                     //image: {
