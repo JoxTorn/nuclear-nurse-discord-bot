@@ -69,7 +69,7 @@ exports.run = (client) => {
 
                 let msgEmbed = {
                     color: 0x000000,
-                    description: `**[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})** have claimed **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}** ${element.oldFaction == 0 ? '' : 'from **' + element.oldFactionName + '**'}`,
+                    description: `**[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})** have claimed **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}** ${element.oldFaction == 0 ? '' : 'from **[' + element.oldFactionName + '](https://www.torn.com/factions.php?step=profile&ID=' + element.oldFaction + ')**'}`,
                     timestamp: new Date()
                 };
 
