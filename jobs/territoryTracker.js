@@ -66,14 +66,24 @@ exports.run = (client) => {
                     //},
                 };
                 */
-
-                let msgEmbed = {
-                    color: 0x000000,
-                    description: `**[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})** have claimed **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}** ${element.oldFaction == 0 ? '' : 'from **[' + element.oldFactionName + '](https://www.torn.com/factions.php?step=profile&ID=' + element.oldFaction + ')**'}`,
-                    timestamp: new Date()
-                };
-
-                channelTerritories.send({ embed: msgEmbed });
+                if(element.newFaction == 0){
+                    let msgEmbed = {
+                        color: 0x000000,
+                        description: `**[${element.oldFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.oldFaction})** abandoned **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}**`,
+                        timestamp: new Date()
+                    };
+    
+                    channelTerritories.send({ embed: msgEmbed });
+                }
+                else{
+                    let msgEmbed = {
+                        color: 0x000000,
+                        description: `**[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})** have claimed **[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})** in sector **${element.sector} ${element.position}** ${element.oldFaction == 0 ? '' : 'from **[' + element.oldFactionName + '](https://www.torn.com/factions.php?step=profile&ID=' + element.oldFaction + ')**'}`,
+                        timestamp: new Date()
+                    };
+    
+                    channelTerritories.send({ embed: msgEmbed });
+                }
             });
             
             data.rackets.forEach(element => {
@@ -150,14 +160,14 @@ exports.run = (client) => {
                         msgEmbed.fields.push(
                             {
                                 name: 'Old Faction',
-                                value: `[${element.factionName_old}](https://www.torn.com/factions.php?step=profile&ID=${element.faction_old})`,
+                                value: (element.faction_old == 0 ? element.factionName_old : `[${element.factionName_old}](https://www.torn.com/factions.php?step=profile&ID=${element.faction_old})`),
                                 inline: true,
                             }
                         );
                         msgEmbed.fields.push(
                             {
                                 name: 'New Faction',
-                                value: `[${element.factionName}](https://www.torn.com/factions.php?step=profile&ID=${element.faction})`,
+                                value: (element.faction == 0 ? element.factionName : `[${element.factionName}](https://www.torn.com/factions.php?step=profile&ID=${element.faction})`),
                                 inline: true,
                             }
                         );
