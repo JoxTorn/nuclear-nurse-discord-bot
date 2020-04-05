@@ -22,5 +22,10 @@
     "revive_request_redirect" : [{
         "from" : "reviving-request",
         "to" : "reviving"
+    }],
+
+    "bust_request_redirect" : [{
+        "from" : "busts",
+        "to" : "busts"
     }]
 }
