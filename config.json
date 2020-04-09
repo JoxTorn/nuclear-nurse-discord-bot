@@ -27,5 +27,10 @@
     "bust_request_redirect" : [{
         "from" : "busts",
         "to" : "busts"
-    }]
+    }],
+
+    "reward_system" : {
+        "channel" : "rads_shop",
+        "admin_role" : "Rads Admin"
+    }
 }
