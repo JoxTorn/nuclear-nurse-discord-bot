@@ -80,7 +80,7 @@ exports.run = (client, message, args) => {
         let msgEmbed = {
             color: 0x00ff55,
             title: 'Sell Report',
-            description: `Oreder **${orderID}**\n${msg}`,
+            description: `Order **${orderID}**\n${msg}`,
             fields: [],
             timestamp: new Date()
         };
