@@ -86,8 +86,8 @@ exports.run = (client, message, args) => {
 
 
         msgEmbed.fields.push({
-            name: 'Orders',
-            value: orderText.length ? orderText : 'There are no incomplete orders',
+            name: 'Pending Orders',
+            value: orderText.length ? orderText : 'There are no pending orders',
             inline: false
         });
 
