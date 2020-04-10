@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
         let msgEmbed = {
             color: 0x55ff00,
             title: 'Orders',
-            description: `List of all incomplete orders`,
+            description: `List of all pending orders`,
             fields: [],
             timestamp: new Date()
         };
