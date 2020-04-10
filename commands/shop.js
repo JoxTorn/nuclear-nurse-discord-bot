@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
         let msgEmbed = {
             color: 0x00ff55,
             title: 'Shop',
-            description: `**WELCOME** to Nuke Shop`,
+            description: `Welcome to **Nuke Rads Shop** where you can exchange your Rads with items`,
             fields: [],
             timestamp: new Date()
         };
