@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
 
         let msgEmbed = {
             color: 0x0099ff,
-            title: 'Wallet',
+            title: 'Rads Wallet',
             description: `
 **${parseInt(data.quantity)}** rad${Math.abs(data.quantity) > 1 ? 's' : ''} total\n
 **${parseInt(data.reserved)}** rad${Math.abs(data.reserved) > 1 ? 's' : ''} reserved\n
