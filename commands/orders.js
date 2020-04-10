@@ -63,7 +63,7 @@ exports.run = (client, message, args) => {
 
 
         msgEmbed.fields.push({
-            name: 'Orders',
+            name: 'Pending Orders',
             value: orderText,
             inline: false
         });
