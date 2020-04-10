@@ -71,7 +71,7 @@ exports.run = (client, message, args) => {
                 msg = `**ERROR**: Insufficient funds`;;
                 break;
             case -9:
-                msg = `**ERROR**: Order does not exist\'s or it\'s already completed`;
+                msg = `**ERROR**: Order does not exist or it\'s already completed`;
                 break;
             default:
                 msg = '**UNKNOWN**';
