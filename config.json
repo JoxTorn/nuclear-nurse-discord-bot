@@ -30,7 +30,7 @@
     }],
 
     "reward_system" : {
-        "channel" : "rads_shop",
+        "channel" : ["rads_shop", "rads-shop"},
         "admin_role" : "Rads Admin"
     }
 }
