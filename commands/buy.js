@@ -55,7 +55,7 @@ exports.run = (client, message, args) => {
         //console.log(json);
         message.reply(data.message);
         adminChannel = guild.channels.find(channel => channel.name == client.config.reward_system.admin_channel);
-        if(!adminChannel){
+        if(adminChannel){
             adminChannel.send(`${message.author} bought from shop. ${data.message}`);
         }
     }
