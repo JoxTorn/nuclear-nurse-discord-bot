@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
     }
 
     const data = JSON.stringify({
-        Action: 'sell',
+        Action: 'void',
         orderID: orderID,
         discordName: member.nickname || member.user.username
     })
@@ -66,10 +66,7 @@ exports.run = (client, message, args) => {
                 msg = '**COMPLETED**';
                 break;
             case -1:
-                msg = `**ERROR**: Insufficient funds`;;
-                break;
-            case -9:
-                msg = `**ERROR**: Order does not exist or it\'s already completed`;
+                msg = `**ERROR**`;;
                 break;
             default:
                 msg = '**UNKNOWN**';
@@ -77,7 +74,7 @@ exports.run = (client, message, args) => {
 
         let msgEmbed = {
             color: 0x00ff55,
-            title: 'Sell Report',
+            title: 'Void Report',
             description: `Order **${orderID}**\n${msg}`,
             fields: [],
             timestamp: new Date()
