@@ -2,7 +2,7 @@ const https = require('https');
 
 exports.run = (client, message, args) => {
 
-    if(message.channel.name !== client.config.reward_system.channel){
+    if(message.channel.name !== client.config.reward_system.shop_channel){
         return message.reply(`Can't execute this command on this channel`);
     }
 
@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
         playerID: tornId,
         discordID: member.id,
         discordName: member.nickname || member.user.username,
-        shopID: args[0]
+        shopID: args[0].replace('#','')
     })
 
     const options = {

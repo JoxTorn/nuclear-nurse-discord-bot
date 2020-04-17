@@ -30,7 +30,8 @@
     }],
 
     "reward_system" : {
-        "channel" : "nuke-rads-shop",
+        "shop_channel" : "nuke-rads-shop",
+        "admin_channel" : "rads-shop-admin",
         "admin_role" : "Rads Admin"
     }
 }
