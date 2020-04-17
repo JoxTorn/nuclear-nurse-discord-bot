@@ -3,7 +3,9 @@ const https = require('https');
 exports.run = (client, message, args) => {
 
     if(message.channel.name !== client.config.reward_system.shop_channel){
-        return message.reply(`Can't execute this command on this channel`);
+        if(message.channel.name !== client.config.reward_system.admin_channel){
+            return message.reply(`Can't execute this command on this channel`);
+        }
     }
 
     var member = message.member;

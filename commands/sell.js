@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
         return message.reply(`Can't execute this command on this channel`);
     }
 
-    if(!message.member.roles.some(role => role.name === client.config.reward_system.admin_role)){
+    if(!message.member.roles.some(role => role.id === client.config.reward_system.admin_role)){
         return message.reply(`This command is only for adminstrators`);
     }
     

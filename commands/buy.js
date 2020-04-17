@@ -3,7 +3,9 @@ const https = require('https');
 exports.run = (client, message, args) => {
 
     if(message.channel.name !== client.config.reward_system.shop_channel){
-        return message.reply(`Can't execute this command on this channel`);
+        if(message.channel.name !== client.config.reward_system.admin_channel){
+            return message.reply(`Can't execute this command on this channel`);
+        }
     }
 
     var member = message.member;
@@ -52,6 +54,10 @@ exports.run = (client, message, args) => {
         let data = JSON.parse(json);
         //console.log(json);
         message.reply(data.message);
+        adminChannel = guild.channels.find(channel => channel.name == client.config.reward_system.admin_channel);
+        if(!adminChannel){
+            adminChannel.send(`${message.author} bought from shop. ${data.message}`);
+        }
     }
 
     //Function for finding id from nickname name[id]
