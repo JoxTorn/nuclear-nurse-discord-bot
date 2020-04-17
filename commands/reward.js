@@ -66,6 +66,7 @@ exports.run = (client, message, args) => {
 
         let data = JSON.parse(json);
         let mgs = '';
+        console.log(data);
 
         switch(Number(data.rezult)){
             case 1:
