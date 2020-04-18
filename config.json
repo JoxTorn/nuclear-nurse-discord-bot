@@ -33,5 +33,9 @@
         "shop_channel" : "nuke-rads-shop",
         "admin_channel" : "rads-shop-admin",
         "admin_role" : "697859145042493490"
-    }
+    },
+
+    "follow_roles" : [
+        "Reviver", "Bookie", "Racer", "Stocks", "Bust", "RR", "Looter"
+    ]
 }
