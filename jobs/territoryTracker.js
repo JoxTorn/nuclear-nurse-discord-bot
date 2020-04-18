@@ -199,7 +199,7 @@ exports.run = (client) => {
                 //channelRackets.send(JSON.stringify(element));
                 channelRackets.send({ embed: msgEmbed });
             });
-            console.log('done :P');
+            console.log('Territory and Racket test...');
         }
         else{
             console.warn('territoryTracker', 'No guild found...');
