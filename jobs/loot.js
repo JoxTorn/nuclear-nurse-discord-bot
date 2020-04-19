@@ -4,8 +4,8 @@ exports.run = (client) => {
 
     //Template for jobs, use this code as starting point for new job
     
-    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 2 /*minutes*/;
-    var ping_uder = 60 /*seconds*/ * 5 /*minutes*/;
+    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 0.2 /*minutes*/;
+    var ping_uder = 60 /*seconds*/ * 15 /*minutes*/;
  
     var job = setInterval(checkLoot, interval);
 
@@ -26,6 +26,7 @@ exports.run = (client) => {
 
         sendMessage(data, '307223431924023296');
         sendMessage(data, '545317324089982976');
+        //sendMessage(data, '454591553432846336'); //test server
     }
 
     function sendMessage(data, guild_id){
@@ -82,7 +83,9 @@ exports.run = (client) => {
                     },
                 };
                 
-                channelLoot.send('<@&701052827031699496>', { embed: msgEmbed });
+                role = guild.roles.find(role => role.name.toLowerCase() === 'Looter'.toLowerCase());
+
+                channelLoot.send((role ? `<@&${role.id}>` : ''), { embed: msgEmbed });
             }
             console.log('Loot test...');
         }
