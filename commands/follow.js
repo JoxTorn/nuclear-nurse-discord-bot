@@ -4,7 +4,7 @@ exports.run = (client, message, args) => {
     let roleNames = '';
 
     for(let i = 0; i < args.length; i++){
-        if(client.config.follow_roles.includes(args[i])){
+        if(client.config.follow_roles.includes(args[i].toLowerCase())){
             roles.push(message.guild.roles.find(role => role.name.toLowerCase() === args[i].toLowerCase()));
             roleNames += (roleNames == '' ? '' : ', ') + args[i];
         }

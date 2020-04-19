@@ -36,7 +36,7 @@
     },
 
     "follow_roles" : [
-        "Reviver", "Bookie", "Racer", "Stocks", "Bust", "RR", "Looter", "TCSE","TSBC","TCB","SYS","SLAG","IOU","GRN","TCHS","YAZ","TCT","CNC","MSG","TMI","TCP","IIL","FHG","SYM","LSC","PRN","EWM","TCM","ELBT","HRG","TGP","WSSB","ISTC","BAG","EVL","MCS","WLT","TCC"
+        "reviver", "bookie", "racer", "stocks", "bust", "rr", "looter", "tcse","tsbc","tcb","sys","slag","iou","grn","tchs","yaz","tct","cnc","msg","tmi","tcp","iil","fhg","sym","lsc","prn","ewm","tcm","elbt","hrg","tgp","wssb","istc","bag","evl","mcs","wlt","tcc"
     ]
 }
 
