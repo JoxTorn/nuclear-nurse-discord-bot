@@ -24,7 +24,12 @@ exports.run = (client) => {
     function parseData(json){
         let data = JSON.parse(json);
 
-        var guild = client.guilds.get('307223431924023296');
+        sendMessage(data, '307223431924023296');
+        sendMessage(data, '545317324089982976');
+    }
+
+    function sendMessage(data, guild_id){
+        var guild = client.guilds.get(guild_id);
         if(guild){
             var channelLoot = guild.channels.filter(channel => { return channel.name == 'loot'}).first();
 
