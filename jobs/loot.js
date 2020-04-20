@@ -4,7 +4,7 @@ exports.run = (client) => {
 
     //Template for jobs, use this code as starting point for new job
     
-    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 2 /*minutes*/;
+    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 3 /*minutes*/;
     var ping_uder = 60 /*seconds*/ * 5 /*minutes*/;
  
     var job = setInterval(checkLoot, interval);
