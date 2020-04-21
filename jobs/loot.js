@@ -4,8 +4,8 @@ exports.run = (client) => {
 
     //Template for jobs, use this code as starting point for new job
     
-    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 0.2 /*minutes*/;
-    var ping_uder = 60 /*seconds*/ * 15 /*minutes*/;
+    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 1 /*minutes*/;
+    var ping_uder = 60 /*seconds*/ * 6 /*minutes*/;
  
     var job = setInterval(checkLoot, interval);
 
@@ -38,7 +38,7 @@ exports.run = (client) => {
             for (const [id, npc] of entries) {
 
                 if(npc.levels.current == 3 || npc.levels.current == 4){
-                    if(npc.timings[npc.levels.next].due > ping_uder){
+                    if(npc.timings[npc.levels.next].due > ping_uder || npc.timings[npc.levels.next].due < ping_uder - (interval / 1000)){
                         //If due is bigger then ping under skip...
                         continue;
                     }
