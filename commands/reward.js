@@ -124,7 +124,7 @@ exports.run = (client, message, args) => {
                 }
             });
 
-            console.log(arr);
+            //console.log(arr);
         }
 
         sendData(arr);
