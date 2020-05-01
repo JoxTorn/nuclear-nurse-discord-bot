@@ -58,9 +58,9 @@ exports.run = (client, message, args) => {
             color: 0x0099ff,
             title: `Rads Wallet ${data.player}`,
             description: `
-**${parseInt(data.quantity)}** rad${Math.abs(data.quantity) > 1 ? 's' : ''} total\n
-**${parseInt(data.reserved)}** rad${Math.abs(data.reserved) > 1 ? 's' : ''} reserved\n
-**${parseInt(data.quantity) - parseInt(data.reserved)}** rad${Math.abs(parseInt(data.quantity) - parseInt(data.reserved)) > 1 ? 's' : ''} available
+**${parseFloat(data.quantity)}** rad${Math.abs(data.quantity) > 1 ? 's' : ''} total\n
+**${parseFloat(data.reserved)}** rad${Math.abs(data.reserved) > 1 ? 's' : ''} reserved\n
+**${parseFloat(data.quantity) - parseFloat(data.reserved)}** rad${Math.abs(parseFloat(data.quantity) - parseFloat(data.reserved)) > 1 ? 's' : ''} available
                 `,
             fields: [],
             timestamp: new Date()
@@ -69,7 +69,7 @@ exports.run = (client, message, args) => {
         let logText = '';
 
         data.logs.forEach(element => {
-            logText += `**${Math.abs(parseInt(element.quantity))}** rad${Math.abs(data.quantity) > 1 ? 's' : ''} ${element.quantity >= 0 ? 'earned' : 'spent'} ${timeConverter(element.timestamp)} ${element.reason_description} \n`;
+            logText += `**${Math.abs(parseFloat(element.quantity))}** rad${Math.abs(data.quantity) > 1 ? 's' : ''} ${element.quantity >= 0 ? 'earned' : 'spent'} ${timeConverter(element.timestamp)} ${element.reason_description} \n`;
         });
 
 
@@ -83,7 +83,7 @@ exports.run = (client, message, args) => {
         let orderText = '';
 
         data.orders.forEach(element => {
-            orderText += `Order **${parseInt(element.id)}** at ${timeConverter(element.timestamp)} for **${element.itme_name}** at cost ${parseInt(element.price)}\n`;
+            orderText += `Order **${parseInt(element.id)}** at ${timeConverter(element.timestamp)} for **${element.itme_name}** at cost ${parseFloat(element.price)}\n`;
         });
 
 

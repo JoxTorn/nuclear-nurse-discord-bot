@@ -58,7 +58,7 @@ exports.run = (client, message, args) => {
         let orderText = '';
 
         data.forEach(element => {
-            orderText += `[${timeConverter(element.timestamp)}] Order **${parseInt(element.id)}**  for **${element.itme_name}** by **${element.discord_name}** at cost ${parseInt(element.price)}\n`;
+            orderText += `[${timeConverter(element.timestamp)}] Order **${parseInt(element.id)}**  for **${element.itme_name}** by **${element.discord_name}** at cost ${parseFloat(element.price)}\n`;
         });
 
 
