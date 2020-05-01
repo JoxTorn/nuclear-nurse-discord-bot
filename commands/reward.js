@@ -123,6 +123,8 @@ exports.run = (client, message, args) => {
                     arr.push({player_id: Number(row[0]), quantity: Number(row[1]), description: row[2]});
                 }
             });
+
+            console.log(arr);
         }
 
         sendData(arr);
