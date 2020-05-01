@@ -119,7 +119,7 @@ exports.run = (client, message, args) => {
         if(data.length > 0){
             data.forEach(row => {
                 //console.log(row, row.length, Number.isInteger(Number(row[0])), Number.isInteger(Number(row[1])));
-                if(row.length == 3 && Number.isInteger(Number(row[0])) && Number.isInteger(Number(row[1]))){
+                if(row.length == 3 && Number.isInteger(Number(row[0])) && !Number.isNaN(Number(row[1]))){
                     arr.push({player_id: Number(row[0]), quantity: Number(row[1]), description: row[2]});
                 }
             });
