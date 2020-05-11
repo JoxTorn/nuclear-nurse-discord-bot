@@ -19,6 +19,8 @@ exports.run = (client, message, args) => {
         discordName: member.nickname || member.user.username,
         shopID: args[0].replace('#','')
     })
+    
+    console.log('Buy Request: ', data);
 
     const options = {
         hostname: 'www.nukefamily.org',
@@ -51,7 +53,7 @@ exports.run = (client, message, args) => {
     req.end()
 
     function processMessage(json){
-        console.log('Response: ',json);
+        console.log('Buy Response: ',json);
         let data = JSON.parse(json);
         //console.log(json);
         message.reply(data.message);
