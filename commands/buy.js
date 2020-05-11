@@ -51,6 +51,7 @@ exports.run = (client, message, args) => {
     req.end()
 
     function processMessage(json){
+        console.log(json);
         let data = JSON.parse(json);
         //console.log(json);
         message.reply(data.message);
