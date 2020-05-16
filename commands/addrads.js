@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
     var member = message.member;
     var guild = message.guild;
 
-    if(args.length >= 3 && Number.isInteger(Number(row[0])) && !Number.isNaN(Number(row[1]))){
+    if(args.length >= 3 && Number.isInteger(Number(args[0])) && !Number.isNaN(Number(args[1]))){
 
         let arr = [];
         let msg = "";
