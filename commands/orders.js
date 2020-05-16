@@ -47,6 +47,10 @@ exports.run = (client, message, args) => {
     function createMessage(json){
         let data = JSON.parse(json);
 
+        createEmbed(data);
+    }
+
+    function createEmbed(data){
         let msgEmbed = {
             color: 0x55ff00,
             title: 'Orders',
@@ -57,10 +61,19 @@ exports.run = (client, message, args) => {
 
         let orderText = '';
 
+        /*
         data.forEach(element => {
             orderText += `[${timeConverter(element.timestamp)}] Order **${parseInt(element.id)}**  for **${element.itme_name}** by **${element.discord_name}** at cost ${parseFloat(element.price)}\n`;
         });
+        */
 
+        let i = 0;
+
+        while(i < 5 && data.length > 0){
+            let element = data.pop();
+            orderText += `[${timeConverter(element.timestamp)}] Order **${parseInt(element.id)}**  for **${element.itme_name}** by **${element.discord_name}** at cost ${parseFloat(element.price)}\n`;
+            i++;
+        }
 
         msgEmbed.fields.push({
             name: 'Pending Orders',
@@ -69,6 +82,10 @@ exports.run = (client, message, args) => {
         });
 
         message.reply({ embed: msgEmbed });
+
+        if(data.length > 0){
+            createEmbed(data);
+        }
     }
 
     function timeConverter(UNIX_timestamp){
