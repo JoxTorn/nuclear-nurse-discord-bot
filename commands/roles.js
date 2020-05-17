@@ -37,11 +37,11 @@ exports.run = (client, message, args) => {
         }
 
         rolesArray.sort((a,b) => {
-            if(a.number - b.number == 0){
+            if(b.number - a.number == 0){
                 return (a.name < b.name ? -1 : 1) ;
             }
             else{
-                return a.number - b.number;
+                return b.number - a.number;
             }
         });
 
