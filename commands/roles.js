@@ -47,6 +47,8 @@ exports.run = (client, message, args) => {
 
         let msg = '```\n';
 
+        let roleNum = 0;
+        let roleNumNoMemeners = 0;
         rolesArray.forEach(element => {
             msg += `${element.name} [${element.number}]\n`;
             if(msg.length > 1000){
@@ -54,9 +56,14 @@ exports.run = (client, message, args) => {
                 message.channel.send(msg);
                 msg = '```\n';
             }
+            roleNum++;
+            if(element.number == 0){
+                roleNumNoMemeners++
+            }
         });
 
         msg += '```\n';
         message.channel.send(msg);
+        message.channel.send('```' + `Total nunmber of roles: ${roleNum}\nNumber of roles without memebrs ${roleNumNoMemeners}` + '```');
     }
 }
