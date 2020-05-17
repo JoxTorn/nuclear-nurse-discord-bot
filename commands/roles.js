@@ -38,7 +38,7 @@ exports.run = (client, message, args) => {
 
         rolesArray.sort((a,b) => {
             if(b.number - a.number == 0){
-                return (a.name < b.name ? -1 : 1) ;
+                return (a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1) ;
             }
             else{
                 return b.number - a.number;
@@ -64,6 +64,6 @@ exports.run = (client, message, args) => {
 
         msg += '```\n';
         message.channel.send(msg);
-        message.channel.send('```' + `Total nunmber of roles: ${roleNum}\nNumber of roles without memebrs ${roleNumNoMemeners}` + '```');
+        message.channel.send('```' + `Total number of roles: ${roleNum}\nUnassigned roles: ${roleNumNoMemeners}` + '```');
     }
 }
