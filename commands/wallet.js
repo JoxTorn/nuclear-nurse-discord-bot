@@ -8,6 +8,10 @@ exports.run = (client, message, args) => {
         }
     }
 
+    if(message.channel.name !== client.config.reward_system.admin_channel && args && args[0]){
+        return message.reply(`Can't execute this command on this channel with additional arguments`);
+    }
+
     var member = message.member;
     var guild = message.guild;
     var tornId = args[0] || getIdFormNickname(member.nickname || member.user.username);
