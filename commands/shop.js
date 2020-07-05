@@ -31,7 +31,7 @@ exports.run = (client, message, args) => {
         let msgEmbed = {
             color: 0x00ff55,
             title: 'Nuclear Rads Shop',
-            description: `Welcome to **Nuke Rads Shop** where you can exchange your Rads with items, to buy an item use the command: **!Buy itemID**`,
+            description: `Welcome to **Nuke Rads Shop** where you can exchange your Rads with items, to buy an item use the command: **!Buy itemID**, Example: **!buy 90**`,
             fields: [],
             timestamp: new Date()
         };
