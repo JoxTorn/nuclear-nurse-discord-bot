@@ -36,7 +36,7 @@
     },
 
     "follow_roles" : [
-        "smoker", "bookie", "racer", "stocks", "bust", "rr", "looter", "spy", "spanker", "tcse","tsbc","tcb","sys","slag","iou","grn","tchs","yaz","tct","cnc","msg","tmi","tcp","iil","fhg","sym","lsc","prn","ewm","tcm","elbt","hrg","tgp","wssb","istc","bag","evl","mcs","wlt","tcc"
+        "smoker", "bookie", "racer", "stocks", "Dump", "bust", "rr", "looter", "spy", "spanker", "tcse","tsbc","tcb","sys","slag","iou","grn","tchs","yaz","tct","cnc","msg","tmi","tcp","iil","fhg","sym","lsc","prn","ewm","tcm","elbt","hrg","tgp","wssb","istc","bag","evl","mcs","wlt","tcc"
     ]
 }
 
