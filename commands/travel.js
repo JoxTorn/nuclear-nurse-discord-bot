@@ -49,7 +49,7 @@ exports.run = (client, message, args) => {
 
         data.stocks.forEach(
             element => {
-                if(element.abroad_quantity > 0 && (element.item_type == 'Flower' || element.item_type == 'Plushie' || (element.country_name == "South Africa" && element.item_name == 'Xanax')) && element.item_name != "Dozen White Roses") {
+                if(element.abroad_quantity > 0 && (element.item_type == 'Flower' || element.item_type == 'Plushie' || (element.country_name == "South Africa" && element.item_name == 'Xanax') || element.item_name == 'Flash Grenade' || element.item_name == 'Smoke Grenade') && element.item_name != "Dozen White Roses") {
 
                     let flag = '';
 
