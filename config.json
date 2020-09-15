@@ -17,7 +17,11 @@
 
     "verified_role" : "Verified",
 
-    "revive_command_mention" : "Reviver",
+    "revive_command_mention" : {
+        "307223431924023296" : "Reviver",
+        "545317324089982976" : "Healer",
+        "454591553432846336" : "Someone"
+    },
 
     "revive_request_redirect" : [{
         "from" : "reviving-request",
