@@ -25,7 +25,7 @@ exports.run = (client) => {
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
                         }
                         else{
-                            if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size > 0){
+                            if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size > 1){
                                 console.log('Message already checked, skip');
                                 continue;
                             }
@@ -112,6 +112,11 @@ exports.run = (client) => {
                         }
                         else{
                             console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
+
+                            //check is travel
+                            if(obj.status.state == "Traveling"){
+                                msg[1].react("✈️");
+                            }   
                         }
                     }
                 } catch (error) {

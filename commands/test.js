@@ -3,17 +3,11 @@ exports.run = (client, message, args) => {
     message.channel.send("pong").then((msg) => {
         msg.react("🚑").then(() => {
             msg.react("👍").then(() => {
-                let botReactions = msg.reactions.filter(reaction => reaction.users.has(client.user.id));
-
-                console.log(botReactions.size);
-                /*
-                console.log(msg.reactions.filter(reaction => {
-                    //console.log(reaction.emoji.name, reaction.users)
-                    reaction.users.has(client.user.id)
-                }));
-                //let userReactions = msg.reactions.cache.filter(reaction => reaction.users.cache.has(client.user.id));
-                //console.log(userReactions);
-                */
+                msg.react("👍").then(() => {
+                    let botReactions = msg.reactions.filter(reaction => reaction.users.has(client.user.id));
+                    console.log(botReactions.size);
+    
+                })
             })
         });
     }).catch(console.error);
