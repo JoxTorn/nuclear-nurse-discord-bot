@@ -99,7 +99,9 @@ exports.run = (client) => {
                                 channelDel[1].send('Hospital time 0, Delete IT');
                                 channelDel[1].send(msg[1].content);
                             }
-                            msg[1].delete().catch(console.error);
+                            msg[1].react(":ambulance:");
+                            //msg[1].delete().catch(console.error);
+                            deleteMessage(msg[1]);
                         }
                         else{
                             console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
@@ -115,4 +117,7 @@ exports.run = (client) => {
         });
     }
 
+    deleteMessage(msg){
+        setTimeout(function() {msg.delete().catch(console.error);}, 3000);
+    }
 }
