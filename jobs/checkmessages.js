@@ -25,6 +25,11 @@ exports.run = (client) => {
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
                         }
                         else{
+                            if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size == 0){
+                                console.log('Message already checked, skip');
+                                continue;
+                            }
+
                             var re = /(https:\/\/www\.torn\.com\/profiles\.php\?XID=)(\d+)/gm;
                             var found = re.exec(msg[1].content);
                             var test = false;
@@ -101,7 +106,7 @@ exports.run = (client) => {
                             }
                             msg[1].react("🚑");
                             msg[1].react("👍");
-                            msg[1].react("<:CH:549268101473239040>");
+                            msg[1].react("549268101473239040")
                             //msg[1].delete().catch(console.error);
                             deleteMessage(msg[1]);
                         }
@@ -120,7 +125,6 @@ exports.run = (client) => {
     }
 
     function deleteMessage(msg){
-        console.log('delete message called');
-        setTimeout(function() {console.log('deleting message'); msg.delete().catch(console.error);}, 15000);
+        setTimeout(function() {msg.delete().catch(console.error);}, 3000);
     }
 }
