@@ -111,13 +111,13 @@ exports.run = (client) => {
                             deleteMessage(msg[1]);
                         }
                         else{
-                            console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);
-
-                            //check is travel
-                            if(obj.status.state == "Traveling"){
-                                msg[1].react("✈️");
-                            }   
+                            console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);  
                         }
+
+                        //check is travel
+                        if(obj.status.state == "Traveling"){
+                            msg[1].react("✈️");
+                        } 
                     }
                 } catch (error) {
                     console.log(error, msg[0]);
