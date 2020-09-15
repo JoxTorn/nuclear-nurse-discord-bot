@@ -26,8 +26,11 @@ exports.run = (client) => {
                         }
                         else{
                             if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size > 1){
-                                console.log('Message already checked, skip');
+                                console.log('Message already checked, skip', msg[1].id);
                                 continue;
+                            }
+                            else{
+                                console.log('Message NOT checked, Test IT', msg[1].id);
                             }
 
                             var re = /(https:\/\/www\.torn\.com\/profiles\.php\?XID=)(\d+)/gm;
