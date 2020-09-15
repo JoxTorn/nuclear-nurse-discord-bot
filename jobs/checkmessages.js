@@ -125,6 +125,6 @@ exports.run = (client) => {
     }
 
     function deleteMessage(msg){
-        setTimeout(function() {msg.delete().catch(console.error);}, 15000);
+        setTimeout(function() {msg.delete().catch(console.error);}, 60000);
     }
 }
