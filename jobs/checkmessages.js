@@ -25,7 +25,7 @@ exports.run = (client) => {
                             //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
                         }
                         else{
-                            if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size == 0){
+                            if(msg[1].reactions.filter(reaction => reaction.users.has(client.user.id)).size > 0){
                                 console.log('Message already checked, skip');
                                 continue;
                             }
