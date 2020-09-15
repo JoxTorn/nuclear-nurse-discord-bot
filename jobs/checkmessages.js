@@ -99,7 +99,7 @@ exports.run = (client) => {
                                 channelDel[1].send('Hospital time 0, Delete IT');
                                 channelDel[1].send(msg[1].content);
                             }
-                            msg[1].react(":ambulance:");
+                            msg[1].react("👍");
                             //msg[1].delete().catch(console.error);
                             deleteMessage(msg[1]);
                         }
