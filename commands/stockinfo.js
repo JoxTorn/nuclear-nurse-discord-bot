@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
     var shares = "";
 
     for(arg of args){
-        shares += (shares.length > 0 ? "," : "") + arg;
+        shares += (shares.length > 0 ? "," : "") + arg.toUpperCase();
     }
 
     var url = `https://www.nukefamily.org/hq/old/StockInfo.php?stocks=${shares}`;
