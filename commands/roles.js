@@ -10,8 +10,10 @@ exports.run = (client, message, args) => {
     var roles = {};
 
     for(let role of message.member.guild.roles){
-        roles[role[1].name].number = 0;
-        roles[role[1].name].id = role.id;
+        roles[role[1].name] = {
+            number = 0,
+            id = role.id
+        }
     }
 
     // Fetch guild members
