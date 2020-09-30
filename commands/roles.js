@@ -10,7 +10,8 @@ exports.run = (client, message, args) => {
     var roles = {};
 
     for(let role of message.member.guild.roles){
-        roles[role[1].name] = 0;
+        roles[role[1].name].number = 0;
+        roles[role[1].name].id = role.id;
     }
 
     // Fetch guild members
@@ -18,7 +19,7 @@ exports.run = (client, message, args) => {
         for(let member of guild.members){
             for(let role of member[1].roles){
                 console.log(member[1].user.username, role[1].name);
-                roles[role[1].name]++;
+                roles[role[1].name].number++;
             }
         }
     
@@ -32,7 +33,8 @@ exports.run = (client, message, args) => {
         for(let prop in roles){
             rolesArray.push({
                 name: prop,
-                number: roles[prop],
+                id: roles[prop].id,
+                number: roles[prop].number
             })
         }
 
@@ -50,7 +52,7 @@ exports.run = (client, message, args) => {
         let roleNum = 0;
         let roleNumNoMemeners = 0;
         rolesArray.forEach(element => {
-            msg += `${element.name} [${element.number}]\n`;
+            msg += `${element.name} <@&${element.id}> [${element.number}]\n`;
             if(msg.length > 1000){
                 msg += '```';
                 message.channel.send(msg);
