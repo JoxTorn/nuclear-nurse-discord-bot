@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
     for(let role of message.member.guild.roles){
         roles[role[1].name] = {
             number : 0,
-            id : role.id
+            id : role[1].id
         }
     }
 
