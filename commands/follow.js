@@ -12,10 +12,10 @@ exports.run = (client, message, args) => {
 
     if(roles.length > 0){
             message.member.addRoles(roles).then(m => {
-            message.channel.send(`${m}, you have ${roleNames} role${roles.length > 1 ? 's' : ''}.`).catch(console.error);
+            message.channel.send(`${m}, you have ${roleNames} role${roles.length > 1 ? 's' : ''}.`).then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);}).catch(console.error);
         }).catch(error => {
             if(error.code == 50013){
-                message.channel.send(`I don't have permission to modify roles for ${message.member}`).catch(console.error);
+                message.channel.send(`I don't have permission to modify roles for ${message.member}`).then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);}).catch(console.error);
             }
             else{
                 console.log(error);
@@ -24,6 +24,10 @@ exports.run = (client, message, args) => {
         
     }
     else{
-        message.channel.send(`No roles to add`).catch(console.error);
+        message.channel.send(`No roles to add`).then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);}).catch(console.error);
     }
+
+    setTimeout(function() {
+        message.delete().catch(console.error);
+    }, 2000);
 }
