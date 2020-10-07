@@ -1,13 +1,14 @@
 const https = require('https');
+const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
-
+/*
     if(message.channel.name !== client.config.reward_system.shop_channel){
         if(message.channel.name !== client.config.reward_system.admin_channel){
             return message.reply(`Can't execute this command on this channel`);
         }
     }
-
+*/
     var url = `https://www.nukefamily.org/dev/CoinShop.json`;
 
     https.get(url, function(res){
@@ -38,22 +39,42 @@ exports.run = (client, message, args) => {
 
         let logText = '';
         let space = ' ';
+        let dot = ' ';
+        let header = `[${('ID' + space.repeat(2)).slice(0,2)}  ${('Item' + space.repeat(35)).slice(0,35)} ${(space.repeat(6) + 'Price').slice(-6)}]\n`;
+
+        msgEmbed.fields.push({
+            name: '\u200b',
+            value: '```css\n'+ header + '```',
+            inline: false
+        });
 
         data.forEach(element => {
-            logText += ` #${(element.id + space.repeat(2)).slice(0,2)} ${(element.item + space.repeat(35)).slice(0,35)} ${(space.repeat(6) + element.price).slice(-6)} \n`;
+            logText += ` #${(element.id + space.repeat(2)).slice(0,2)} ${(element.item + space + dot.repeat(35)).slice(0,35)} ${(dot.repeat(7) + space + element.price).slice(-7)} \n`;
             //console.log(logText);
+            if(logText.length > 900){
+                //Add to field
+                msgEmbed.fields.push({
+                    name: '\u200b',
+                    value: '```css\n' /*+ header*/ + logText + '```',
+                    inline: false
+                });
+                //reset value
+                logText = '';
+            }
         });
 
 
        msgEmbed.fields.push({
             name: '\u200b',
-            value: '```css\n' + `[${('ID' + space.repeat(2)).slice(0,2)}  ${('Item' + space.repeat(35)).slice(0,35)} ${(space.repeat(6) + 'Price').slice(-6)}]\n` + logText + '```',
-            inline: true
+            value: '```css\n' /*+ header*/ + logText + '```',
+            inline: false
         });
 
-        message.reply({ embed: msgEmbed });
+        message.channel.send({ embed: msgEmbed });
     }
 
+
+/*
     function timeConverter(UNIX_timestamp){
         if(UNIX_timestamp){
             var a = new Date(UNIX_timestamp * 1000);
@@ -71,5 +92,7 @@ exports.run = (client, message, args) => {
             return 'undefined';
         }
     }
+*/
+
 
 }
