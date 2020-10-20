@@ -87,6 +87,8 @@ exports.run = (client, message, args) => {
                                             });
                                         }
                                         else{
+                                            message.channel.send(`${m}, you are now verified and you have permissions based on your current faction.`).catch(console.error);
+                                            /*
                                             // Create a new role with data
                                             message.guild.createRole({
                                                 name: factionName
@@ -105,6 +107,7 @@ exports.run = (client, message, args) => {
                                                     });
                                                 })
                                                 .catch(console.error)
+                                            */
                                         }
                                     }).catch(error => {
                                         if(error.code == 50013){
