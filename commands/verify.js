@@ -95,6 +95,7 @@ exports.run = (client, message, args) => {
                                             })
                                                 .then(newRole => {
                                                     roles.push(newRole);
+                                            */
                                                     m.addRoles(roles).then(m => {
                                                         message.channel.send(`${m}, you are now verified and you have permissions based on your current faction.`).catch(console.error);
                                                     }).catch(error => {
@@ -105,6 +106,7 @@ exports.run = (client, message, args) => {
                                                             console.log(error);
                                                         }
                                                     });
+                                            /*
                                                 })
                                                 .catch(console.error)
                                             */
