@@ -87,7 +87,6 @@ exports.run = (client, message, args) => {
                                             });
                                         }
                                         else{
-                                            //message.channel.send(`${m}, you are now verified and you have permissions based on your current faction.`).catch(console.error);
                                             /*
                                             // Create a new role with data
                                             message.guild.createRole({
