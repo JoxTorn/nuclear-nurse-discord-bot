@@ -39,6 +39,10 @@
         "admin_role" : "697859145042493490"
     },
 
+    "gym" : {
+        "channel" : "gym"
+    },
+
     "follow_roles" : [
         "smoker", "bookie", "racer", "stocks", "dump", "good", "verygood", "bust", "rr", "looter", "spy", "spanker", "elimination", "tcse", "tsbc", "tcb", "sys", "slag", "iou","grn","tchs","yaz","tct","cnc","msg","tmi","tcp","iil","fhg","sym","lsc","prn","ewm","tcm","elbt","hrg","tgp","wssb","istc","bag","evl","mcs","wlt","tcc"
     ]
