@@ -3,7 +3,7 @@ const { GuildAuditLogsEntry } = require("discord.js");
 exports.run = (client, message, args) => {
 
     if(!message.member) { 
-        message.guild.members.fetch(message.author.id).then(m => {message.member = m;  creareReviveRequest();})
+        console.log('Memeber of message is nto set... ');
     }
     else{  
         creareReviveRequest();
