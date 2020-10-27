@@ -2,8 +2,12 @@ const { GuildAuditLogsEntry } = require("discord.js");
 
 exports.run = (client, message, args) => {
 
+    var member = message.member;
+    var guild = message.guild;
+
     if(!message.member) { 
-        console.log('Memeber of message is nto set... ');
+        console.log('Memeber of message is not set... ');
+        guild.fetchMember(message.author.id, false).then(m => {member = m; creareReviveRequest();})
     }
     else{  
         creareReviveRequest();
@@ -16,7 +20,7 @@ exports.run = (client, message, args) => {
 
     function creareReviveRequest(){
 
-        if(!message.member.roles.find(role => role.name === client.config.verified_role)){
+        if(!member.roles.find(role => role.name === client.config.verified_role)){
             return message.reply(`You need to be verified to use this command, please type ${client.config.prefix}verify for verification`);
         }
         
@@ -24,8 +28,7 @@ exports.run = (client, message, args) => {
             return message.reply(`Can't execute this command on this channel`);
         }
         
-        var member = message.member;
-        var guild = message.guild;
+
         var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention[guild.id]);
         //var mantionRole = '<@&617337809228922881>';
 
