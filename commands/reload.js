@@ -1,7 +1,9 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
+
+  var member = await message.guild.fetchMember(message.author.id, false);
 
   //This command is available only for members with administrative role
-  if(!message.member.roles.find(role => role.name === client.config.admin_role)){
+  if(!member.roles.find(role => role.name === client.config.admin_role)){
     return message.reply("You don\'t have permission to execute this command");
   }
 

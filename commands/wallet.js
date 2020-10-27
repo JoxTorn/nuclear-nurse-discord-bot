@@ -1,6 +1,8 @@
 const https = require('https');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
+
+    var member = await message.guild.fetchMember(message.author.id, false);
 
     if(message.channel.name !== client.config.reward_system.shop_channel){
         if(message.channel.name !== client.config.reward_system.admin_channel){
@@ -12,7 +14,6 @@ exports.run = (client, message, args) => {
         return //message.reply(`Can't execute this command on this channel with additional arguments`);
     }
 
-    var member = message.member;
     var guild = message.guild;
     var tornId = args[0] || getIdFormNickname(member.nickname || member.user.username);
 

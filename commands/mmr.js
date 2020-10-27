@@ -1,10 +1,12 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     //message.channel.send("pong").catch(console.error);
 
-    if(!message.member.roles.find(role => role.name === client.config.admin_role)){
+    var member = await message.guild.fetchMember(message.author.id, false);
+
+    if(!member.roles.find(role => role.name === client.config.admin_role)){
         return message.reply("You don\'t have permission to execute this command");
     }
 
@@ -13,7 +15,7 @@ exports.run = (client, message, args) => {
         if(typeof familyMembers == "object"){
             
             // Fetch guild members
-            message.member.guild.fetchMembers().then(guild => {
+            message.guild.fetchMembers().then(guild => {
                 var memberList = [];
 
                 for(var member of guild.members){
@@ -27,7 +29,7 @@ exports.run = (client, message, args) => {
                     obj.nickname = (member[1].nickname || member[1].displayName);
                     obj.faction = (memberFaction[0] ? memberFaction[0].factionID : 'NOT MEMBER');
                     
-                    for(var role of message.member.guild.roles){
+                    for(var role of message.guild.roles){
                         obj[role[1].name] = (member[1].roles.get(role[1].id) ? true : false);
                     }
                     memberList.push(obj);

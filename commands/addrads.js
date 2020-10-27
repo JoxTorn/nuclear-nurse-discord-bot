@@ -1,16 +1,17 @@
 const https = require('https');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
+
+    var member = await message.guild.fetchMember(message.author.id, false);
 
     if(message.channel.name !== client.config.reward_system.admin_channel){
         return message.reply(`Can't execute this command on this channel`);
     }
 
-    if(!message.member.roles.some(role => role.id === client.config.reward_system.admin_role)){
+    if(!member.roles.some(role => role.id === client.config.reward_system.admin_role)){
         return message.reply(`This command is only for adminstrators`);
     }
 
-    var member = message.member;
     var guild = message.guild;
 
     if(args.length >= 3 && Number.isInteger(Number(args[0])) && !Number.isNaN(Number(args[1]))){

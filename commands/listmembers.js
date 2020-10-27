@@ -1,17 +1,17 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
     //message.channel.send("pong").catch(console.error);
 
-    if(!message.member.roles.find(role => role.name === client.config.admin_role)){
+    var member = await message.guild.fetchMember(message.author.id, false);
+
+    if(!member.roles.find(role => role.name === client.config.admin_role)){
         return message.reply("You don\'t have permission to execute this command");
     }
 
-    //var guild = message.member.guild;
-
     // Fetch guild members
-    message.member.guild.fetchMembers().then(guild => {
+    member.guild.fetchMembers().then(guild => {
         
         var maxRoles = 0;
 

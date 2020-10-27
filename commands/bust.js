@@ -1,14 +1,15 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
 
-    if(!message.member.roles.find(role => role.name === client.config.verified_role)){
+    var member = await message.guild.fetchMember(message.author.id, false);
+
+    if(!member.roles.find(role => role.name === client.config.verified_role)){
         return message.reply(`You need to be verified to use this command, please type ${client.config.prefix}verify for verification`);
     }
     
     if(message.channel.name == 'general'){
         return message.reply(`Can't execute this command on this channel`);
     }
-
-    var member = message.member;
+    
     var guild = message.guild;
     //var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention);
     var mantionRole = '<@&695958006462152774>';

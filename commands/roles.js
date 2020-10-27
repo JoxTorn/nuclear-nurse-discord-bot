@@ -1,15 +1,17 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
 
-    if(!message.member.roles.find(role => role.name === client.config.admin_role)){
+    var member = await message.guild.fetchMember(message.author.id, false);
+
+    if(!member.roles.find(role => role.name === client.config.admin_role)){
         return message.reply("You don\'t have permission to execute this command");
     }
 
     var roles = {};
 
-    for(let role of message.member.guild.roles){
+    for(let role of message.guild.roles){
         roles[role[1].name] = {
             number : 0,
             id : role[1].id
@@ -17,7 +19,7 @@ exports.run = (client, message, args) => {
     }
 
     // Fetch guild members
-    message.member.guild.fetchMembers().then(guild => {
+    message.guild.fetchMembers().then(guild => {
         for(let member of guild.members){
             for(let role of member[1].roles){
                 console.log(member[1].user.username, role[1].name);

@@ -7,10 +7,7 @@ exports.run = (client, message, args) => {
     if(message.channel.name !== client.config.gym.channel){
         return message.reply(`Can't execute this command on this channel`);
     }
-
-    var member = message.member;
-    var guild = message.guild;
-
+    
     var query = ``;
 
     if(args.length == 0){
