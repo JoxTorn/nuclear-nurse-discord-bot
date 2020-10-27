@@ -2,6 +2,10 @@ const { GuildAuditLogsEntry } = require("discord.js");
 
 exports.run = (client, message, args) => {
 
+    if(!message.member) { 
+        message.member = await message.guild.members.fetch(message.author.id)
+    }
+
     if(!message.member.roles.find(role => role.name === client.config.verified_role)){
         return message.reply(`You need to be verified to use this command, please type ${client.config.prefix}verify for verification`);
     }
@@ -9,11 +13,12 @@ exports.run = (client, message, args) => {
     if(message.channel.name == 'general'){
         return message.reply(`Can't execute this command on this channel`);
     }
-
+    
     var member = message.member;
     var guild = message.guild;
     var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention[guild.id]);
     //var mantionRole = '<@&617337809228922881>';
+
 
     var author = message.author;
     /************************************/
