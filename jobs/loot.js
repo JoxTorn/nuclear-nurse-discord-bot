@@ -7,7 +7,7 @@ exports.run = (client) => {
     var interval = 1000 /*miliseconds*/ * 60 /*seconds*/ * 1 /*minutes*/;
     var ping_uder = 60 /*seconds*/ * 6 /*minutes*/;
  
-    var job = setInterval(checkLoot, interval);
+    //Disabled cause no data... var job = setInterval(checkLoot, interval);
 
     const npcImage = {
         "4" : "https://profileimages.torn.com/4d661456-1798-ad32-4.png",

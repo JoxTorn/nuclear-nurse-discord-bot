@@ -76,6 +76,7 @@ exports.run = async (client, message, args) => {
                                         //Check is role exists for user faction
                                         var roleFaction = message.guild.roles.find(role => role.name === factionName);
                                         if(roleFaction){
+                                            console.log('Role for faction exists');
                                             roles.push(roleFaction);
                                             m.addRoles(roles).then(m => {
                                                 message.channel.send(`${m}, you are now verified and you have permissions based on your current faction.`).catch(console.error);
@@ -85,10 +86,12 @@ exports.run = async (client, message, args) => {
                                                 }
                                                 else{
                                                     console.log(error);
+                                                    console.log('Roles to add:', roles);
                                                 }
                                             });
                                         }
                                         else{
+                                            console.log('Role for faction does not exist');
                                             /*
                                             // Create a new role with data
                                             message.guild.createRole({
@@ -105,6 +108,7 @@ exports.run = async (client, message, args) => {
                                                         }
                                                         else{
                                                             console.log(error);
+                                                            console.log('Roles to add:', roles);
                                                         }
                                                     });
                                             /*
