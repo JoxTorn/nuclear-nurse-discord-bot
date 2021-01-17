@@ -5,9 +5,11 @@ exports.run = async (client, message, args) => {
     var member = await message.guild.fetchMember(message.author.id, false);
     var guild = message.guild;
 
+    /*
     if(!member.roles.find(role => role.name === client.config.verified_role)){
         return message.reply(`You need to be verified to use this command, please type ${client.config.prefix}verify for verification`);
     }
+    */
     
     if(message.channel.name == 'general'){
         return message.reply(`Can't execute this command on this channel`);
