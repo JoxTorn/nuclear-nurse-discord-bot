@@ -2,6 +2,7 @@
     "prefix" : "!",
  
     "factions" : {
+        "366"  : ["Nukers"],
         "8954" : ["Nukers"],
         "8085" : ["Nukers"],
         "13851" : ["Nukers"],
