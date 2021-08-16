@@ -1,14 +1,14 @@
 {
-  "name": "jbot",
+  "name": "nuclear-nurse-discord-bot",
   "version": "1.0.0",
-  "description": "Jox Discord bot",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jox",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^13.1.0"
   }
 }
