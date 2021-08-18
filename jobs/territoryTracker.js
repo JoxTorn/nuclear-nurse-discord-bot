@@ -1,10 +1,9 @@
 const https = require('https');
 
 exports.run = (client) => {
-
-    //Template for jobs, use this code as starting point for new job
     
-    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/;
+    
+    var interval = 1000 /*miliseconds*/ * 6 /*seconds*/;
 
     var job = setInterval(checkTerritories, interval);
 
@@ -13,59 +12,16 @@ exports.run = (client) => {
     }
 
     function parseTerritoryData(data){
-        var guild = client.guilds.get('307223431924023296');
+        var guild = client.guilds.cache.find(guild => {
+            return guild.id == '307223431924023296'
+        });
         if(guild){
-            var channelTerritories = guild.channels.filter(channel => { return channel.name == 'territories'}).first();
-            var channelRackets = guild.channels.filter(channel => { return channel.name == 'rackets'}).first();
+            var channelTerritories = guild.channels.cache.filter(channel => { return channel.name == 'territories'}).first();
+            var channelRackets = guild.channels.cache.filter(channel => { return channel.name == 'rackets'}).first();
 
             //console.log(channelTerritories)
 
             data.territories.forEach(element => {
-                /*
-                let msgEmbed = {
-                    color: 0x0099ff,
-                    title: 'Territory change',
-                    //url: `https://www.torn.com/city.php#terrName=${element.territory}`,
-                    //author: {
-                    //    name: 'Some name',
-                    //    icon_url: 'https://i.imgur.com/wSTFkRM.png',
-                    //    url: 'https://discord.js.org',
-                    //},
-                    description: `**[${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})**`,
-                    //thumbnail: {
-                    //    url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
-                    fields: [
-                        {
-                            name: 'Sector',
-                            value: element.sector,
-                            inline: true,
-                        },
-                        {
-                            name: 'Position',
-                            value: element.position,
-                            inline: true,
-                        },
-                        {
-                            name: 'New Faction',
-                            value: `[${element.newFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.newFaction})`,
-                        },
-                        {
-                            name: 'Old Faction',
-                            value: `[${element.oldFactionName}](https://www.torn.com/factions.php?step=profile&ID=${element.oldFaction})`,
-                            inline: true,
-                        }
-                    ],
-                    //image: {
-                    //    url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
-                    timestamp: new Date(),
-                    //footer: {
-                    //    text: 'Some footer text here',
-                    //    icon_url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
-                };
-                */
                 if(element.newFaction == 0){
                     let msgEmbed = {
                         color: 0x000000,
@@ -90,27 +46,9 @@ exports.run = (client) => {
                 let msgEmbed = {
                     color: 0xff99ff,
                     title: `${element.event} Racket`,
-                    //url: `https://www.torn.com/city.php#terrName=${element.territory}`,
-                    //author: {
-                    //    name: 'Some name',
-                    //    icon_url: 'https://i.imgur.com/wSTFkRM.png',
-                    //    url: 'https://discord.js.org',
-                    //},
                     description: `**${element.name}** on territory [${element.territory}](https://www.torn.com/city.php#terrName=${element.territory})`,
-                    //thumbnail: {
-                    //    url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
-                    fields: [
-                        
-                    ],
-                    //image: {
-                    //    url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
+                    fields: [],
                     timestamp: new Date(),
-                    //footer: {
-                    //    text: 'Some footer text here',
-                    //    icon_url: 'https://i.imgur.com/wSTFkRM.png',
-                    //},
                 };
 
                 if(element.event == 'Changed'){
