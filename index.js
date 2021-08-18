@@ -62,4 +62,4 @@ fs.readdir("./jobs/", (err, files) => {
 });
 
 //Log in to discord
-client.login(client.config.token);
+client.login(client.config.token).catch(err => {console.error(err);});
