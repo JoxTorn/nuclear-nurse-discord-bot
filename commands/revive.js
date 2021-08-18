@@ -29,7 +29,7 @@ exports.run = (client, message, args) => {
     //for(var rediresct of client.config.revive_request_redirect)
     var redirect = client.config.revive_request_redirect.find(function(element) {return element.from == currentChannel;})
     if(redirect){
-        respenseChannel = guild.channels.find(channel => channel.name == redirect.to);
+        respenseChannel = guild.channels.cache.find(channel => channel.name == redirect.to);
         if(!respenseChannel){
             respenseChannel = message.channel;
             redirect = undefined;
