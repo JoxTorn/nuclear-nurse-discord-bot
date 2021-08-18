@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
                 try {
                     var obj = JSON.parse(body);
 
-                    
+                    console.log(obj);
                 } catch (error) {
                     console.log(error);
                 }

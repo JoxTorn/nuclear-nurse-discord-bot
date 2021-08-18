@@ -1,19 +1,19 @@
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
  
     let roles = [];
     let roleNames = '';
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
 
     for(let i = 0; i < args.length; i++){
         if(client.config.follow_roles.includes(args[i].toLowerCase())){
-            roles.push(message.guild.roles.find(role => role.name.toLowerCase() === args[i].toLowerCase()));
+            roles.push(message.guild.roles.cache.find(role => role.name.toLowerCase() === args[i].toLowerCase()));
             roleNames += (roleNames == '' ? '' : ', ') + args[i];
         }
     }
 
     if(roles.length > 0){
-        member.removeRoles(roles).then(m => {
+        member.roles.remove(roles).then(m => {
             message.channel.send(`${m}, you have removed ${roleNames} role${roles.length > 1 ? 's' : ''}.`).then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);}).catch(console.error);
         }).catch(error => {
             if(error.code == 50013){

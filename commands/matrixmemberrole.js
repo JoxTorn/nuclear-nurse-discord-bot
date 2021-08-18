@@ -1,3 +1,4 @@
+/*
 var fs = require('fs');
 var path = require('path');
 
@@ -81,3 +82,4 @@ exports.run = async (client, message, args) => {
     }).catch(console.error);
 
 }
+*/

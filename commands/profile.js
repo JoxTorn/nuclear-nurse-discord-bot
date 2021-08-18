@@ -1,8 +1,8 @@
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
 
-    if(!member.roles.find(role => role.name === client.config.verified_role)){
+    if(!member.roles.cache.find(role => role.name === client.config.verified_role)){
         return message.reply(`You need to be verified to use this command, please type ${client.config.prefix}verify for verification`);
     }
     

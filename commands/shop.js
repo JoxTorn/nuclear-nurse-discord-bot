@@ -2,13 +2,13 @@ const https = require('https');
 const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
-/*
+
     if(message.channel.name !== client.config.reward_system.shop_channel){
         if(message.channel.name !== client.config.reward_system.admin_channel){
             return message.reply(`Can't execute this command on this channel`);
         }
     }
-*/
+
     var url = `https://www.nukefamily.org/dev/CoinShop.json`;
 
     https.get(url, function(res){

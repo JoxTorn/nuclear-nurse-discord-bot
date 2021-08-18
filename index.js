@@ -3,7 +3,7 @@ const fs = require('fs');
 var path = require('path');
 
 //Initating discord client
-const  client = new Discord.Client({forceFetchUsers: true}); 
+const  client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS] }); 
 //If there is no force fatch users some users will not be fetch and will have problem if i tyr to access then ove guild members list
 //https://github.com/discordjs/discord.js/issues/230
 

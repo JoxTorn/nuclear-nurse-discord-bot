@@ -1,3 +1,4 @@
+/*
 const https = require('https');
 
 exports.run = (client, message, args) => {
@@ -24,3 +25,4 @@ exports.run = (client, message, args) => {
         console.log(error);
     });
 }
+*/

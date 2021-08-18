@@ -1,8 +1,8 @@
 const https = require('https');
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
 
     if(message.channel.name !== client.config.reward_system.shop_channel){
         if(message.channel.name !== client.config.reward_system.admin_channel){

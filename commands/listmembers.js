@@ -1,40 +1,39 @@
 var fs = require('fs');
 var path = require('path');
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
     //message.channel.send("pong").catch(console.error);
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
 
-    if(!member.roles.find(role => role.name === client.config.admin_role)){
+    if(!member.roles.cache.find(role => role.name === client.config.admin_role)){
         return message.reply("You don\'t have permission to execute this command");
     }
 
     // Fetch guild members
-    member.guild.fetchMembers().then(guild => {
-        
-        var maxRoles = 0;
+    message.guild.members.fetch().then((members) => {
+            var maxRoles = 0;
 
-        var csv = "";
-        var headers = "member,nickname";
+            var csv = "";
+            var headers = "member,nickname";
 
-        //Going thrue all members of guild
-        for(member of guild.members){
-            csv += "\n" + member[1].user.tag + "," + (member[1].nickname || member[1].displayName);
-            var i = 0;
-            //Going over each role of selected member
-            for(role of member[1].roles){
-                csv += "," + role[1].name;
-                i++;
+            members.forEach((member) => {
+                csv += "\n" + member.user.tag + "," + (member.nickname || member.displayName);
+                var i = 0;
+                //Going over each role of selected member
+                member.roles.cache.forEach((role) => {
+                    csv += "," + role.name;
+                    i++;
+                })
+                
+                //Checking maximum number of roles
+                if(i > maxRoles){maxRoles = i};
+            })
+
+            //creating headers for csv
+            for(var i=0; i < maxRoles; i++){
+                headers += ",Role" + i;
             }
-            //Checking maximum number of roles
-            if(i > maxRoles){maxRoles = i};
-        }
-
-        //creating headers for csv
-        for(var i=0; i < maxRoles; i++){
-            headers += ",Role" + i;
-        }
 
         //Combining headers and data
         csv = headers + csv;
@@ -55,7 +54,7 @@ exports.run = async (client, message, args) => {
             console.log("The file was saved!", exportName);
 
             //Sending file to discord
-            message.reply("Here is list of all members", {file: exportName}).then(
+            message.reply("Here is list of all members", {files: [exportName] }).then(
                 (msg) => {
                     //Deleting file
                     fs.unlink(exportName, (err) => {
@@ -67,7 +66,7 @@ exports.run = async (client, message, args) => {
                 }
             );
         });
-        
+
     }).catch(console.error);
 
 }

@@ -102,7 +102,7 @@ exports.run = (client, message, args) => {
             console.log("The file was saved!", exportName);
 
             //Sending file to discord
-            message.reply(`Gym data for ${query}`, {file: exportName}).then(
+            message.reply(`Gym data for ${query}`, { files: [exportName] }).then(
                 (msg) => {
                     //Deleting file
                     fs.unlink(exportName, (err) => {

@@ -1,8 +1,8 @@
 const { GuildAuditLogsEntry } = require("discord.js");
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
     var guild = message.guild;
 
     /*
@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
     }
     
 
-    var mantionRole = guild.roles.find(role => role.name === client.config.revive_command_mention[guild.id]);
+    var mantionRole = guild.roles.cache.find(role => role.name === client.config.revive_command_mention[guild.id]);
     //var mantionRole = '<@&617337809228922881>';
 
 

@@ -4,9 +4,9 @@ exports.run = (client, message, args) => {
         msg.react("🚑").then(() => {
             msg.react("👍").then(() => {
                 msg.react("👍").then(() => {
-                    let botReactions = msg.reactions.filter(reaction => reaction.users.has(client.user.id));
+                    let botReactions = msg.reactions.cache.filter(reaction => reaction.users.cache.has(client.user.id));
                     console.log(botReactions.size);
-    
+                    let rections = msg.reactions
                 })
             })
         });

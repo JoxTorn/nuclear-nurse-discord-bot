@@ -1,3 +1,4 @@
+/*
 const https = require('https');
 
 exports.run = (client, message, args) => {
@@ -95,13 +96,7 @@ exports.run = (client, message, args) => {
             }
         );
 
-        /*
-        data.forEach(element => {
-            logText += ` #${(element.id + space.repeat(2)).slice(0,2)} ${(element.item + space.repeat(35)).slice(0,35)} ${(space.repeat(6) + element.price).slice(-6)} \n`;
-            //console.log(logText);
-        });
 
-        */
        msgEmbed.fields.push({
             name: '\u200b',
             value: logText,
@@ -134,3 +129,4 @@ exports.run = (client, message, args) => {
     }
 
 }
+*/

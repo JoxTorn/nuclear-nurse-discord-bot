@@ -5,27 +5,33 @@ exports.run = (client) => {
  
     var job = setInterval(cleenAssitChannel, interval);
 
+    //setTimeout(cleenAssitChannel, interval);
 
     function cleenAssitChannel(){
 
-        var guild = client.guilds.get('307223431924023296');
+        var guild = client.guilds.cache.find(guild => {
+            return guild.id == '307223431924023296'
+        });
         if(guild){
-            var channelAssist = guild.channels.filter(channel => { return channel.name == 'attack-assisting'}).first();
+            var channelAssist = guild.channels.cache.filter(channel => { return channel.name == 'attack-assisting'}).first();
 
-            //console.log(channelAssist);
-
-            channelAssist.fetchMessages({limit: 50}).then( messages => {
+            channelAssist.messages.fetch({limit: 50}).then( messages => {
                 
-                for(msg of messages){
-                    if(msg[1].author.id == '300686645370421248'){
-                        //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
+                let MessageForDelete = messages.filter(msg => {
+                    if(msg.author.id == '300686645370421248'){
+                        return false;
                     }
                     else{
-                        if((Date.now() - msg[1].createdTimestamp) > deleteAfter){
-                            msg[1].delete().catch(console.error);
+                        if((Date.now() - msg.createdTimestamp) > deleteAfter){
+                            return true;
+                        }
+                        else{
+                            return false;
                         }
                     }
-                }
+                })
+
+                channelAssist.bulkDelete(MessageForDelete);
             })
         }
         else{

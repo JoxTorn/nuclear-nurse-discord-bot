@@ -1,7 +1,7 @@
 const https = require('https');
 
-exports.run = (client) => {
-    
+exports.run = async (client) => {
+
     var interval = 1000 /*miliseconds*/ * 10 /*seconds*/;
     repeat = undefined; //undefined = forever
     repeatCount = 0;
@@ -9,56 +9,79 @@ exports.run = (client) => {
     var job = setInterval(checkMessages, interval);
 
     function checkMessages(){
-        var guild = client.guilds.get('545317324089982976');
+        var guild = client.guilds.cache.find(guild => {
+            return guild.id == '545317324089982976'
+        });
         if(guild){
-            var channels = guild.channels.filter(channel => { return channel.name == 'reviving' || channel.name == 'reviving-public' || channel.name == 'jux' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' || channel.name == 'evo'});
+            var channels = guild.channels.cache.filter(channel => { return channel.name == 'reviving' || channel.name == 'reviving-public' || channel.name == 'jux' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' || channel.name == 'evo'});
             var startTime = Date.now();
 
-            for(var channel of channels){
-                //console.log('channel', channel);
-                channel[1].fetchMessages({limit: 50}).then( messages => {
-                    var checkPoint1 = Date.now(); 
-                    
-                    //console.log(`Message fatch time for channel ${messages.first().channel.name}: ${checkPoint1 -startTime}`);
-                    for(msg of messages){
-                        if(msg[1].author.id == '300686645370421248'){
-                            //console.log('This message will be skipped because its created by ', msg[1].author.username, msg[1].content);
+            channels.each(channel => {
+                channel.messages.fetch({limit: 50}).then( messages => {
+
+                    var messagesToDelete = messages.filter(message => {
+                        if(message.author.id == '300686645370421248'){
+                            return false;
                         }
                         else{
-                            let botReactions = msg[1].reactions.filter(reaction => {return reaction.me});
+                            let botReactions = message.reactions.cache.filter(reaction => {
+                                let bool = reaction.me;
+                                return bool;
+                            });
                             if(botReactions.size > 1){
-                                console.log('Message already checked, skip', msg[1].id, botReactions.size);
-                                continue;
-                            }
-                            else{
-                                console.log('Message NOT checked, Test IT', msg[1].id, botReactions.size);
-                            }
-
-                            var re = /(https:\/\/www\.torn\.com\/profiles\.php\?XID=)(\d+)/gm;
-                            var found = re.exec(msg[1].content);
-                            var test = false;
-                            if(found && found.length == 3){
-                                test = true;
-                            }
-                            if(test){
-                                //console.log(msg[0], msg[1].content, msg[1].createdTimestamp,  'TEST IT');
-                                testReviveMessage(found[2], msg)
-                            }
-                            else{
-                                //console.log(msg[0], msg[1].content, msg[1].createdTimestamp, 'DELETE IT');
-                                var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
-                                for(var channelDel of channelsForDeletedMessages){
-                                    channelDel[1].send('No player id found, Delete IT');
-                                    channelDel[1].send(msg[1].content);
-                                }
-                                msg[1].delete().catch(console.error);
+                                return true;
                             }
                         }
-                    }
-                    var checkPoint2 = Date.now(); 
-                    //console.log(`Message porecessing time for channel ${messages.first().channel.name}: ${checkPoint2-checkPoint1}`);
+
+                        return false;
+                    })
+
+                    channel.bulkDelete(messagesToDelete);
+                
+                });
+
+                channel.messages.fetch({limit: 50}).then( messages => {
+                
+                    var messagesToCheck = messages.filter(message => {
+                        if(message.author.id == '300686645370421248'){
+                            return false;
+                        }
+                        else{
+                            let botReactions = message.reactions.cache.filter(reaction => reaction.users.cache.has(client.user.id));
+                            if(botReactions.size > 1){
+                                console.log('Message already checked, skip', message.id, botReactions.size);
+                                return false;
+                            }
+                            else {
+                                console.log('Message NOT checked, Test IT', message.id, botReactions.size);
+                                return true;
+                            }
+                        }
+                    })
+    
+                    messagesToCheck.each(message => {
+                        var re = /(https:\/\/www\.torn\.com\/profiles\.php\?XID=)(\d+)/gm;
+                        var found = re.exec(message.content);
+                        var test = false;
+                        if(found && found.length == 3){
+                            test = true;
+                        }
+                        if(test){
+                            testReviveMessage(found[2], message)
+                        }
+                        else{
+                            var channelsForDeletedMessages = guild.channels.cache.filter(channel => { return channel.name == 'deleted-reviving-messages'});
+
+                            channelsForDeletedMessages.each(channel => {
+                                channel.send('No player id found, Delete IT')
+                                channel.send(message.content)
+                            })
+
+                            message.delete().catch(console.error);
+                        }
+                    })
                 })
-            }
+            })
         }
         else{
             console.warn('checkMessages', 'No guild found...');
@@ -88,13 +111,15 @@ exports.run = (client) => {
 
                     //console.log(`Data recieved from torn api for ${playerID}. Time needed ${Date.now()-startTime}`);
 
-                    var guild = client.guilds.get('545317324089982976');
+                    var guild = client.guilds.cache.find(guild => {
+                        return guild.id == '545317324089982976'
+                    });
                     //console.log('message:' , msg);
 
                     var obj = JSON.parse(body);
             
                     if(obj.error){
-                        console.log(obj.error, msg[0]);
+                        console.log(obj.error, msg.id);
                     }
                     else{
 
@@ -102,29 +127,32 @@ exports.run = (client) => {
 
                         if(obj.states.hospital_timestamp == 0){
                             //console.log('Hospital time 0, Delete IT', obj.states.hospital_timestamp, obj.name);
-                            var channelsForDeletedMessages = guild.channels.filter(channel => { return channel.name == 'deleted-reviving-messages'});
-                            for(var channelDel of channelsForDeletedMessages){
+                            var channelsForDeletedMessages = guild.channels.cache.filter(channel => { return channel.name == 'deleted-reviving-messages'});
+                            channelsForDeletedMessages.each(channel => {
                                 console.log('Hospital time 0, Delete IT');
-                                channelDel[1].send('Hospital time 0, Delete IT');
-                                channelDel[1].send(msg[1].content);
-                            }
-                            msg[1].react("🚑");
-                            msg[1].react("👍");
-                            msg[1].react("549268101473239040")
+                                //channel.send('Hospital time 0, Delete IT')
+                                msg.react("🚑").then(() => {
+                                    msg.react("👍").then(() => {
+                                        msg.react("❤️").then(() => { //"549268101473239040"
+                                            channel.send(msg.content)}) 
+                                    })
+                                });
+                            })
+                            
                             //msg[1].delete().catch(console.error);
-                            deleteMessage(msg[1]);
+                            //deleteMessage(msg[1]);
                         }
                         else{
                             console.log('Hospital time not 0, Leave IT', obj.states.hospital_timestamp, obj.name);  
                         }
 
                         //check is travel
-                        if(obj.status.state == "Traveling"){
-                            msg[1].react("✈️");
+                        if(obj.basicicons && obj.basicicons.icon71){
+                            msg.react("✈️");
                         } 
                     }
                 } catch (error) {
-                    console.log(error, msg[0]);
+                    console.log(error, msg.id);
                 }
         
             });
@@ -133,7 +161,7 @@ exports.run = (client) => {
         });
     }
 
-    function deleteMessage(msg){
-        setTimeout(function() {msg.delete().catch(console.error);}, 60000);
-    }
+    //function deleteMessage(msg){
+    //    setTimeout(function() {msg.delete().catch(console.error);}, 60000);
+    //}
 }

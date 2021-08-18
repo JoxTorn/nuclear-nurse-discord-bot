@@ -1,14 +1,14 @@
 const https = require('https');
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
 
     if(message.channel.name !== client.config.reward_system.admin_channel){
         return message.reply(`Can't execute this command on this channel`);
     }
 
-    if(!member.roles.some(role => role.id === client.config.reward_system.admin_role)){
+    if(!member.roles.cache.find(role => role.id == client.config.reward_system.admin_role)){
         return message.reply(`This command is only for adminstrators`);
     }
 
@@ -75,6 +75,10 @@ exports.run = async (client, message, args) => {
             let element = data.pop();
             orderText += `[${timeConverter(element.timestamp)}] Order **${parseInt(element.id)}**  for **${element.itme_name}** by **${element.discord_name}** at cost ${parseFloat(element.price)}\n`;
             i++;
+        }
+
+        if(orderText.length == 0){
+            orderText = 'No pending orders';
         }
 
         msgEmbed.fields.push({

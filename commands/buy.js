@@ -1,6 +1,6 @@
 const https = require('https');
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
 
     if(message.channel.name !== client.config.reward_system.shop_channel){
         if(message.channel.name !== client.config.reward_system.admin_channel){
@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
         }
     }
 
-    var member = await message.guild.fetchMember(message.author.id, false);
+    var member = message.guild.members.cache.find(memebr => memebr.id == message.author.id);
     var guild = message.guild;
     var tornId = getIdFormNickname(member.nickname || member.user.username);
 
@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
         let data = JSON.parse(json);
         //console.log(json);
         message.reply(data.message);
-        adminChannel = guild.channels.find(channel => channel.name == client.config.reward_system.admin_channel);
+        adminChannel = guild.channels.cache.find(channel => channel.name == client.config.reward_system.admin_channel);
         if(adminChannel){
             adminChannel.send(`<@&${client.config.reward_system.admin_role}> ${message.author} bought from shop. ${data.message}`);
         }
