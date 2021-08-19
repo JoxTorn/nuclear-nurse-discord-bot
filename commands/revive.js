@@ -45,7 +45,7 @@ exports.run = (client, message, args) => {
     
             if(id){
                 //message.channel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
-                respenseChannel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/\n_Requested by **${author}**_`);
+                respenseChannel.send(`${mantionRole}, please revive ${mentionedMember.nickname || mentionedMember.user.username}\n<https://www.torn.com/profiles.php?XID=${id}#/>\n_Requested by **${author}**_`);
                 if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{
@@ -56,12 +56,12 @@ exports.run = (client, message, args) => {
         if(args[0]){
             if(isNaN(args[0])){
                 //message.channel.send(`${mantionRole}, please revive player with name ${args[0]}\nhttps://www.torn.com/profiles.php?NID=${args[0]}#/`);
-                respenseChannel.send(`${mantionRole}, please revive player with name ${args[0]}\nhttps://www.torn.com/profiles.php?NID=${args[0]}#/\n_Requested by **${author}**_`);
+                respenseChannel.send(`${mantionRole}, please revive player with name ${args[0]}\n<https://www.torn.com/profiles.php?NID=${args[0]}#/>\n_Requested by **${author}**_`);
                 if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{
                 //message.channel.send(`${mantionRole}, please revive player with id ${args[0]}\nhttps://www.torn.com/profiles.php?XID=${args[0]}#/`);
-                respenseChannel.send(`${mantionRole}, please revive player with id ${args[0]}\nhttps://www.torn.com/profiles.php?XID=${args[0]}#/\n_Requested by **${author}**_`);
+                respenseChannel.send(`${mantionRole}, please revive player with id ${args[0]}\n<https://www.torn.com/profiles.php?XID=${args[0]}#/>\n_Requested by **${author}**_`);
                 if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
         }
@@ -70,7 +70,7 @@ exports.run = (client, message, args) => {
     
             if(id){
                 //message.channel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
-                respenseChannel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/\n_Requested by **${author}**_`);
+                respenseChannel.send(`${mantionRole}, please revive ${member.nickname || member.user.username}\n<https://www.torn.com/profiles.php?XID=${id}#/>\n_Requested by **${author}**_`);
                 if(redirect){message.reply('Your request is passed to revivers').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{

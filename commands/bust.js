@@ -59,7 +59,7 @@ exports.run = (client, message, args) => {
             var id = getIdFormNickname(member.nickname || member.user.username);
     
             if(id){
-                respenseChannel.send(`${mantionRole}, please bust ${member.nickname || member.user.username}\nhttps://www.torn.com/profiles.php?XID=${id}#/`);
+                respenseChannel.send(`${mantionRole}, please bust ${member.nickname || member.user.username}\n<https://www.torn.com/profiles.php?XID=${id}#/>`);
                 if(redirect){message.reply('Your request is passed to busters').then(responseMessage => {setTimeout(function() {responseMessage.delete().catch(console.error);}, 3000);})}
             }
             else{

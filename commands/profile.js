@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
         var id = getIdFormNickname(mentionedMember.nickname || mentionedMember.user.username);
     
             if(id){
-                message.channel.send(`https://www.torn.com/profiles.php?XID=${id}#/`);
+                message.channel.send(`<https://www.torn.com/profiles.php?XID=${id}#/>`);
             }
             else{
                 message.reply('Can\'t send that message, I didn\'t found ID of mentioned member');
@@ -21,17 +21,17 @@ exports.run = (client, message, args) => {
     else{
         if(args[0]){
             if(isNaN(args[0])){
-                message.channel.send(`https://www.torn.com/profiles.php?NID=${args[0]}#/`);
+                message.channel.send(`<https://www.torn.com/profiles.php?NID=${args[0]}#/>`);
             }
             else{
-                message.channel.send(`https://www.torn.com/profiles.php?XID=${args[0]}#/`);
+                message.channel.send(`<https://www.torn.com/profiles.php?XID=${args[0]}#/>`);
             }
         }
         else{
             var id = getIdFormNickname(member.nickname || member.user.username);
     
             if(id){
-                message.channel.send(`https://www.torn.com/profiles.php?XID=${id}#/`);
+                message.channel.send(`<https://www.torn.com/profiles.php?XID=${id}#/>`);
             }
             else{
                 message.reply('Can\'t send that message, I didn\'t found your ID');
