@@ -2,7 +2,7 @@ const https = require('https');
 
 exports.run = async (client) => {
 
-    var interval = 1000 /*miliseconds*/ * 10 /*seconds*/;
+    var interval = 1000 /*miliseconds*/ * 30 /*seconds*/;
     repeat = undefined; //undefined = forever
     repeatCount = 0;
 

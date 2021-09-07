@@ -3,7 +3,7 @@ const https = require('https');
 exports.run = (client) => {
     
     
-    var interval = 1000 /*miliseconds*/ * 6 /*seconds*/;
+    var interval = 1000 /*miliseconds*/ * 60 /*seconds*/;
 
     var job = setInterval(checkTerritories, interval);
 
