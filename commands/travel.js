@@ -85,7 +85,7 @@ exports.run = (client, message, args) => {
             for (let country in data.stocks) {
                 //console.log(country);
                 let stocks = data.stocks[country].stocks.filter(element => {
-                    return countryItemList[country].items.includes(element.id) && element.quantity > 0;
+                    return countryItemList[country].items.includes(element.id);
                 })
 
                 stocks.forEach(element => {logText += `${countryItemList[country].flag}  ${element.name} **${element.quantity}** ${Math.floor(((Date.now() / 1000) - data.stocks[country].update)/60)}min \n`;})
