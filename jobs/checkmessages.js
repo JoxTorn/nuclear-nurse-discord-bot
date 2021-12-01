@@ -13,7 +13,7 @@ exports.run = async (client) => {
             return guild.id == '545317324089982976'
         });
         if(guild){
-            var channels = guild.channels.cache.filter(channel => { return channel.name == 'reviving' || channel.name == 'reviving-public' || channel.name == 'jux' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'illuminati' || channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' || channel.name == 'evo' || channel.name == 'premium-revive'});
+            var channels = guild.channels.cache.filter(channel => { return channel.name == 'reviving' || channel.name == 'reviving-public' || channel.name == 'jux' || channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'illuminati' || channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' || channel.name == 'dystopia' || channel.name == 'evo' || channel.name == 'premium-revive'});
             var startTime = Date.now();
 
             channels.each(channel => {
