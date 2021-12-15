@@ -11,6 +11,10 @@ exports.run = (client, message, args) => {
     }
     */
     
+    if(guild.id == 307223431924023296){
+        return;
+    }
+    
     if(message.channel.name == 'general'){
         return message.reply(`Can't execute this command on this channel`);
     }
