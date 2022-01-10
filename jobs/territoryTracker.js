@@ -18,8 +18,19 @@ exports.run = (client) => {
         if(guild){
             var channelTerritories = guild.channels.cache.filter(channel => { return channel.name == 'territories'}).first();
             var channelRackets = guild.channels.cache.filter(channel => { return channel.name == 'rackets'}).first();
+            var channelRW = guild.channels.cache.filter(channel => { return channel.name == 'rankedwars'}).first();
 
             //console.log(channelTerritories)
+
+            data.rankedwars.forEach(element => {
+                    let msgEmbed = {
+                        color: 0x000000,
+                        description: `**[${element.faction1_Name}](https://www.torn.com/factions.php?step=profile&ID=${element.faction1_ID})** VS **[${element.faction2_Name}](https://www.torn.com/factions.php?step=profile&ID=${element.faction2_ID})** \n${timeConverter(element.start)}`,
+                        timestamp: new Date()
+                    };
+    
+                    channelRW.send({ embed: msgEmbed });
+            });
 
             data.territories.forEach(element => {
                 if(element.newFaction == 0){
@@ -165,4 +176,20 @@ exports.run = (client) => {
         });
     }
 
+    function timeConverter(UNIX_timestamp) {
+        if (UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getUTCFullYear();
+            var month = months[a.getUTCMonth()];
+            var date = `0${a.getUTCDate()}`.slice(-2);
+            var hour = `0${a.getUTCHours()}`.slice(-2);
+            var min = `0${a.getUTCMinutes()}`.slice(-2);
+            var sec = `0${a.getUTCSeconds()}`.slice(-2);
+            var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+            return time;
+        } else {
+            return 'undefined';
+        }
+    }
 }
