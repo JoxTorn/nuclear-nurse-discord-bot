@@ -16,7 +16,8 @@ exports.run = async (client) => {
             var channels = guild.channels.cache.filter(channel => { return channel.name == 'reviving' || channel.name == 'reviving-public' || channel.name == 'jux' || 
                 channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'illuminati' || 
                 channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' || 
-                channel.name == 'dystopia' || channel.name == 'nuke' || channel.name == 'thedeepend' || channel.name == 'warbirds' || channel.name == 'premium-revive'});
+                channel.name == 'dystopia' || channel.name == 'nuke' || channel.name == 'thedeepend' || channel.name == 'warbirds' || channel.name == 'mss' || 
+                channel.name == 'premium-revive'});
             var startTime = Date.now();
 
             channels.each(channel => {
