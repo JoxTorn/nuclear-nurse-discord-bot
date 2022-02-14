@@ -147,9 +147,9 @@ exports.run = async (client) => {
                                     msg.react("👍").then(() => {
                                         msg.react("❤️").then(() => { //"549268101473239040"
                                             channel.send(msg.content)
-                                        })
-                                    })
-                                });
+                                        }).catch(console.error)
+                                    }).catch(console.error)
+                                }).catch(console.error);
                             })
 
                             //msg[1].delete().catch(console.error);
