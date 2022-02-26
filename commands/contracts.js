@@ -68,7 +68,7 @@ exports.run = (client, message, args) => {
         });
         */
         data.forEach(element => {
-            logText += `${logText.length ? '\n' : ''}[${element.description}](https://www.nukefamily.org/dev/revivecontract.php) @ **${timeConverter(element.start)}**\n${element.status ? element.status : ''}` +  (element.chance ? `< ${element.chance}%` : '');
+            logText += `${logText.length ? '\n' : ''}[${element.description}](https://www.nukefamily.org/dev/revivecontract.php) @ **${timeConverter(element.start)}**\n${element.note}\n${element.status ? element.status : ''}` + (element.chance ? ` < ${element.chance}%` : '') + (element.limit ? ` limit: ${element.limit}` : '');
             //console.log(logText);
             if(logText.length > 900){
                 //Add to field
