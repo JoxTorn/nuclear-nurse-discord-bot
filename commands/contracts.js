@@ -2,6 +2,8 @@ const https = require('https');
 
 exports.run = (client, message, args) => {
 
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0" 
+    
     if(message.channel.name !== 'contracts'){
         return message.reply(`Can't execute this command on this channel`);
     }
