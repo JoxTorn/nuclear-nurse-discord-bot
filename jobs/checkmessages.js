@@ -19,7 +19,7 @@ exports.run = async (client) => {
                         channel.name == 'jfk' || channel.name == 'ns' || channel.name == 'ak' || channel.name == 'elimination' || channel.name == 'illuminati' ||
                         channel.name == 'pt-family' || channel.name == 'da' || channel.name == 'cr' || channel.name == 'vulpes' || channel.name == 'monarch' ||
                         channel.name == 'dystopia' || channel.name == 'nuke' || channel.name == 'thedeepend' || channel.name == 'warbirds' || channel.name == 'mss' ||
-                        channel.name == 'bloodbathandbeyond' || channel.name == 'legacy' || channel.name == 'premium-revive'
+                        channel.name == 'bloodbathandbeyond' || channel.name == 'legacy' || channel.name == '709-south-side' || channel.name == 'premium-revive'
                 });
                 var startTime = Date.now();
 
