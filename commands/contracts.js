@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
         let msgEmbed = {
             color: 0x00ff55,
             title: `Revive contract list [${type}]`,
-            description: `This is list of active contracts`,
+            description: `This is list of [${type.toLowerCase()}] contracts`,
             fields: [],
             timestamp: new Date()
         };
