@@ -6,9 +6,8 @@ exports.run = (client, message, args) => {
         return message.reply(`Can't execute this command on this channel`);
     }
 
-    const data = JSON.stringify({
-        only_completed: 1
-    })
+    const type = (args[0] && args[0] == 'up') ? 'UNPAID' : 'ACTIVE'
+    const data = type == 'UNPAID' ? JSON.stringify({paid: 0}) : JSON.stringify({only_completed: 1})
 
     const options = {
         hostname: 'www.nukefamily.org',
@@ -50,7 +49,7 @@ exports.run = (client, message, args) => {
         
         let msgEmbed = {
             color: 0x00ff55,
-            title: 'Revive contract list',
+            title: `Revive contract list [${type}]`,
             description: `This is list of active contracts`,
             fields: [],
             timestamp: new Date()
