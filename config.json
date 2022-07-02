@@ -5,9 +5,9 @@
         "366"  : ["Nukers"],
         "8954" : ["Nukers"],
         "8085" : ["Nukers"],
-        "13851" : ["Nukers", "Reviver"],
-        "9745" : ["Nukers", "Reviver"],
-        "17133" : ["Nukers", "Reviver"],
+        "13851" : ["Nukers", "Reviver", "Standard Reviver"],
+        "9745" : ["Nukers", "Reviver", "Standard Reviver"],
+        "17133" : ["Nukers", "Reviver", "Standard Reviver"],
         "12094" : ["Nukers"],
         "16282" : ["Nukers"],
         "21028" : ["Nukers", "Reviver"]
