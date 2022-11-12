@@ -1,5 +1,4 @@
-
-start.bat
-installbot.txt
 node_modules
+npm-debug.log
+start.bat
 docker-commands.txt
