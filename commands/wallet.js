@@ -10,6 +10,7 @@ exports.run = (client, message, args) => {
         }
     }
 
+
     if(message.channel.name !== client.config.reward_system.admin_channel && args && args[0]){
         return //message.reply(`Can't execute this command on this channel with additional arguments`);
     }
@@ -86,11 +87,20 @@ exports.run = (client, message, args) => {
 
 
         let orderText = '';
+        let ordersNotDisplayed = false
 
         data.orders.forEach(element => {
-            orderText += `Order **${parseInt(element.id)}** at ${timeConverter(element.timestamp)} for **${element.itme_name}** at cost ${parseFloat(element.price)}\n`;
+            if (orderText.length < 800) {
+                orderText += `Order **${parseInt(element.id)}** at ${timeConverter(element.timestamp)} for **${element.itme_name}** at cost ${parseFloat(element.price)}\n`;
+            }
+            else {
+                ordersNotDisplayed = true;
+            }
         });
 
+        if (ordersNotDisplayed){
+            orderText += '**And more...**';
+        }
 
         msgEmbed.fields.push({
             name: 'Pending Orders',
