@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
         let logText = '';
         let space = ' ';
         let dot = ' ';
-        let header = `[${('ID' + space.repeat(2)).slice(0,2)}  ${('Item' + space.repeat(35)).slice(0,35)} ${(space.repeat(6) + 'Price').slice(-6)}]\n`;
+        let header = `[${('ID' + space.repeat(2)).slice(0,2)}  ${('Item' + space.repeat(35)).slice(0,35)} ${(space.repeat(8) + 'Price').slice(-8)}]\n`;
 
         msgEmbed.fields.push({
             name: '\u200b',
@@ -49,7 +49,7 @@ exports.run = (client, message, args) => {
         });
 
         data.forEach(element => {
-            logText += ` #${(element.id + space.repeat(2)).slice(0,2)} ${(element.item + space + dot.repeat(35)).slice(0,35)} ${(dot.repeat(7) + space + element.price).slice(-7)} \n`;
+            logText += ` #${(element.id + space.repeat(2)).slice(0,2)} ${(element.item + space + dot.repeat(35)).slice(0,35)} ${(dot.repeat(9) + space + element.price).slice(-9)} \n`;
             //console.log(logText);
             if(logText.length > 900){
                 //Add to field
