@@ -21,7 +21,7 @@ exports.run = async (client) => {
                         channel.name == 'dystopia' || channel.name == 'nuke' || channel.name == 'thedeepend' || channel.name == 'warbirds' || channel.name == 'mss' ||
                         channel.name == 'bloodbathandbeyond' || channel.name == 'legacy' || channel.name == '709-south-side' || channel.name == 'bengal-tigers' || 
                         channel.name == 'chill-chillas' || channel.name == 'tus' || channel.name == 'Contract-1' || channel.name == 'Contract-2' || 
-                        channel.name == 'Contract-3' || channel.name == 'premium-revive' || channel.name == 'killer-tomatoes'
+                        channel.name == 'Contract-3' || channel.name == 'premium-revive' || channel.name == 'killer-tomatoes' || channel.name == 'westworld'
                 });
                 var startTime = Date.now();
 
