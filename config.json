@@ -10,7 +10,8 @@
         "17133" : ["Nukers", "Reviver"],
         "12094" : ["Nukers"],
         "12863" : ["Nukers"],
-        "21028" : ["Nukers", "Reviver"]
+        "21028" : ["Nukers", "Reviver"],
+        "37426" : ["Nukers"]
     },
     
     "welcome_channel" : "door",
